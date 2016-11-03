@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="PrideTek.EmployeeModule.EmployeeToolbarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PrideTek.EmployeeModule"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:inf="clr-namespace:PrideTek.EzSale.Infrastructure;assembly=PrideTek.EzSale.Infrastructure"
+             mc:Ignorable="d" >
+
+    <Menu>
+        <MenuItem Header="{Binding ViewHeader}" Width="150">
+            <MenuItem Header="Employees"  Command="{Binding NavCommand}" CommandParameter="{x:Static inf:ViewNames.EmployeesView}">
+                <MenuItem.Icon>
+                    <Image Source="../Images/DashedLines.gif" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem.Icon>
+                <Image Source="../Images/UserIcon.png"/>
+            </MenuItem.Icon>
+        </MenuItem>
+    </Menu>
+
+</UserControl>

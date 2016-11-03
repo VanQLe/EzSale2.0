@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="PrideTek.EmployeeModule.EmployeesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PrideTek.EmployeeModule"
+             xmlns:inf="clr-namespace:PrideTek.EzSale.Infrastructure;assembly=PrideTek.EzSale.Infrastructure"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="400">
+
+    <Grid Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="8*" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="LightBlue">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="{Binding ViewHeader}"  Foreground="White" FontSize="20"/>
+            <Button Name="AddEmployee" Grid.Column="3" Content="+" FontSize="15"  HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding NavCommand}" CommandParameter="{x:Static inf:ViewNames.EmployeeAddView}"  />
+        </Grid>
+
+        <Grid Name="SearchGrid" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Name="SeachInput" Grid.Column="0" Margin="8" />
+            <ComboBox Grid.Column="1" Margin="8">
+                <ComboBoxItem Tag="FirstName" IsSelected="True">First Name</ComboBoxItem>
+                <ComboBoxItem Tag="LastName">Last Name</ComboBoxItem>
+                <ComboBoxItem Tag="Email">Email</ComboBoxItem>
+                <ComboBoxItem Tag="WorkPhone">Work Phone</ComboBoxItem>
+                <ComboBoxItem Tag="CellPhone">Cell Phone</ComboBoxItem>
+                <ComboBoxItem Tag="EmployeeCode">Employee code</ComboBoxItem>
+            </ComboBox>
+
+            <ComboBox Grid.Column="2" Margin="8">
+                <ComboBoxItem Tag="Active" IsSelected="True">Active</ComboBoxItem>
+                <ComboBoxItem Tag="Deleted">Deleted</ComboBoxItem>
+                <ComboBoxItem Tag="Both">Both</ComboBoxItem>
+            </ComboBox>
+
+            <Button Grid.Column="3" Margin="8">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="../Images/SearchIcon.jpg"/>
+                    <Label Content="Search" FontSize="8" Padding="3"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+        <Separator Grid.Row="1" VerticalAlignment="Bottom"/>
+    </Grid>
+</UserControl>
+  

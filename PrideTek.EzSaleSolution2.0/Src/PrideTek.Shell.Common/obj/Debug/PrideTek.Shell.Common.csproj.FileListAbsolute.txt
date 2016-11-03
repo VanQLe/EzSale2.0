@@ -1,0 +1,7 @@
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Shell.Common\bin\Debug\PrideTek.Shell.Common.dll
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Shell.Common\bin\Debug\PrideTek.Shell.Common.pdb
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Shell.Common\obj\Debug\PrideTek.Shell.Common.csprojResolveAssemblyReference.cache
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Shell.Common\obj\Debug\PrideTek.Shell.Common.Properties.Resources.resources
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Shell.Common\obj\Debug\PrideTek.Shell.Common.csproj.GenerateResource.Cache
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Shell.Common\obj\Debug\PrideTek.Shell.Common.dll
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Shell.Common\obj\Debug\PrideTek.Shell.Common.pdb

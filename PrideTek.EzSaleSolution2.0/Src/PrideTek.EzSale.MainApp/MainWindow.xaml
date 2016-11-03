@@ -1,0 +1,68 @@
+﻿<Window x:Class="PrideTek.EzSale.MainApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrideTek.EzSale.MainApp"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:inf="clr-namespace:PrideTek.EzSale.Infrastructure;assembly=PrideTek.EzSale.Infrastructure"
+        mc:Ignorable="d">
+
+    <Grid Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Name="StatusGrid" Grid.Row="0" Background="Honeydew">
+            <ItemsControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.StatusRegion }" />
+        </Grid>
+
+        <Grid Grid.Row="1" Background="Teal" Name="SettingGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Name="TitleGrid">
+                <StackPanel Orientation="Horizontal">
+                    <Image Margin="5" Source="../Images/EzSaleLogo.jpg"/>
+                    <Label Margin="5" Content="EzSale" Foreground="White"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="4">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="../Images/ColorWheel.jpg" Margin="5"/>
+                    <Image Source="../Images/FlagLogo.png" Margin="5"/>
+                    <Image Source="../Images/SettingLogo.png" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="6*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Name="ToolbarGrid">
+                <ItemsControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.ToolbarRegion }" />
+            </Grid>
+
+            <Grid Name="ContentRegionGrid" Grid.Column="1">
+                <ContentControl  prism:RegionManager.RegionName="{x:Static inf:RegionNames.ContentRegion }" />
+
+            </Grid>
+
+
+        </Grid>
+
+
+
+    </Grid>
+</Window>

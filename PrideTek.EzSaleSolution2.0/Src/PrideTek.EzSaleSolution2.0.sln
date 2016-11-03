@@ -1,0 +1,69 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Shell", "1. Shell", "{5ACD56BF-F619-4F00-8F6B-6F08C4CC9E0A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Data", "2. Data", "{D283924D-987C-44C5-8295-2E3512140D1E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Modules", "3. Modules", "{F1E9A862-2B99-4F59-A16A-822E6D22720D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrideTek.EzSale.MainApp", "PrideTek.EzSale.MainApp\PrideTek.EzSale.MainApp.csproj", "{17125B1E-0F76-42D5-9E92-8BC73B011D8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrideTek.EmployeeModule", "PrideTek.EmployeeModule\PrideTek.EmployeeModule.csproj", "{96BA7BB1-D1DC-4FBF-A1C9-2EEA9184BF77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrideTek.EzSale.Infrastructure", "PrideTek.EzSale.Infrastructure\PrideTek.EzSale.Infrastructure.csproj", "{902477E1-D57C-4530-B676-67D84F297FC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrideTek.Shell.Common", "PrideTek.Shell.Common\PrideTek.Shell.Common.csproj", "{40535083-398D-4FED-9B71-012B03205E13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrideTek.Shell.Core", "PrideTek.Shell.Core\PrideTek.Shell.Core.csproj", "{DBF43CD5-BE14-4202-9A9B-C10C72FD2625}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{0B53D701-49B8-4742-A0D7-F2A446A5F849}"
+	ProjectSection(SolutionItems) = preProject
+		..\Images\ColorWheel.jpg = ..\Images\ColorWheel.jpg
+		..\Images\ColorWheelLogo.png = ..\Images\ColorWheelLogo.png
+		..\Images\DashedLines.gif = ..\Images\DashedLines.gif
+		..\Images\EzSaleLogo.jpg = ..\Images\EzSaleLogo.jpg
+		..\Images\FlagLogo.png = ..\Images\FlagLogo.png
+		..\Images\SearchIcon.jpg = ..\Images\SearchIcon.jpg
+		..\Images\SettingLogo.png = ..\Images\SettingLogo.png
+		..\Images\UserIcon.png = ..\Images\UserIcon.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17125B1E-0F76-42D5-9E92-8BC73B011D8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17125B1E-0F76-42D5-9E92-8BC73B011D8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17125B1E-0F76-42D5-9E92-8BC73B011D8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17125B1E-0F76-42D5-9E92-8BC73B011D8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96BA7BB1-D1DC-4FBF-A1C9-2EEA9184BF77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96BA7BB1-D1DC-4FBF-A1C9-2EEA9184BF77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96BA7BB1-D1DC-4FBF-A1C9-2EEA9184BF77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96BA7BB1-D1DC-4FBF-A1C9-2EEA9184BF77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{902477E1-D57C-4530-B676-67D84F297FC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{902477E1-D57C-4530-B676-67D84F297FC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{902477E1-D57C-4530-B676-67D84F297FC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{902477E1-D57C-4530-B676-67D84F297FC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40535083-398D-4FED-9B71-012B03205E13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40535083-398D-4FED-9B71-012B03205E13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40535083-398D-4FED-9B71-012B03205E13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40535083-398D-4FED-9B71-012B03205E13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBF43CD5-BE14-4202-9A9B-C10C72FD2625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBF43CD5-BE14-4202-9A9B-C10C72FD2625}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBF43CD5-BE14-4202-9A9B-C10C72FD2625}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBF43CD5-BE14-4202-9A9B-C10C72FD2625}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{96BA7BB1-D1DC-4FBF-A1C9-2EEA9184BF77} = {F1E9A862-2B99-4F59-A16A-822E6D22720D}
+		{40535083-398D-4FED-9B71-012B03205E13} = {5ACD56BF-F619-4F00-8F6B-6F08C4CC9E0A}
+		{DBF43CD5-BE14-4202-9A9B-C10C72FD2625} = {5ACD56BF-F619-4F00-8F6B-6F08C4CC9E0A}
+	EndGlobalSection
+EndGlobal
