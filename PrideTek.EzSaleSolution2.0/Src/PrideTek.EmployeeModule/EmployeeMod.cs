@@ -31,11 +31,10 @@ namespace PrideTek.EmployeeModule
             Container.RegisterTypeForNavigation<EmployeesView>();
             Container.RegisterTypeForNavigation<EmployeeAddView>();
 
-
             //Register ViewModels
             Container.RegisterType<IEmployeeToolbarViewModel, EmployeeToolbarViewModel>();
             Container.RegisterType<IEmployeesViewModel, EmployeesViewModel>();
-            Container.RegisterType<IEmployeeAddViewModel, EmployeeAddViewModel>(); ;
+            Container.RegisterType<IEmployeeAddViewModel, EmployeeAddViewModel>();
         }
     }
 }

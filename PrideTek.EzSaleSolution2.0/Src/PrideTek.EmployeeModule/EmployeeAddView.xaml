@@ -34,24 +34,24 @@
                         </Grid.RowDefinitions>
 
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150px"/>
                             <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="100px"/>
                             <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
 
                         <!--First Row -->
-                        <Button Grid.Row="0" Grid.Column="0" Height="30" Width="30" Content="+"/>
+                        <Button Background="Red" Grid.Row="0" Grid.Column="0" Height="30" Width="30" Content="+" HorizontalAlignment="Left"/>
 
-                        <Grid Grid.Row="0" Grid.Column="1">
+                        <Grid Grid.Row="0" Grid.Column="1" >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="2*"/>
                                 <RowDefinition Height="2*"/>
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
-                            <TextBox Grid.Row="1" Text="First Name" Foreground="Gray"/>
-                            <TextBox Grid.Row="2" Text="Last Name" Foreground="Gray"/>
+                            <TextBox Grid.Row="1" Text="{Binding SelectedItem.FirstName, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
+                            <TextBox Grid.Row="2" Text="{Binding SelectedItem.LastName, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
                         </Grid>
 
                         <Grid Grid.Row="0" Grid.Column="2">
@@ -62,8 +62,8 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
 
-                            <Label Grid.Row="1" FontSize="6" Content="Title/Position"/>
-                            <Label Grid.Row="2" FontSize="6" Content="Date of birth"/>
+                            <Label Background="Red" Grid.Row="1" FontSize="10" Content="Title/Position"/>
+                            <Label Grid.Row="2" FontSize="10" Content="Date of birth"/>
                         </Grid>
 
                         <Grid Grid.Row="0" Grid.Column="3">
@@ -74,7 +74,7 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <ComboBox Grid.Row="1"  Foreground="Gray"/>
-                            <DatePicker Grid.Row="2" FontSize="6" Foreground="Gray"/>
+                            <DatePicker Grid.Row="2" FontSize="10" Foreground="Gray" SelectedDate="{Binding SelectedItem.DoB, UpdateSourceTrigger=PropertyChanged}"/>
                         </Grid>
 
                         <!--Second Row -->
@@ -86,8 +86,8 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
 
-                            <Label Grid.Row="1" FontSize="6" Content="Employee code"/>
-                            <Label Grid.Row="2" FontSize="6" Content="Work Phone"/>
+                            <Label Grid.Row="1" FontSize="10" Content="Employee code"/>
+                            <Label Grid.Row="2" FontSize="10" Content="Work Phone"/>
                         </Grid>
 
                         <Grid Grid.Row="1" Grid.Column="1">
@@ -97,8 +97,8 @@
                                 <RowDefinition Height="2*"/>
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
-                            <TextBox Grid.Row="1" Text="Employee code" Foreground="Gray"/>
-                            <TextBox Grid.Row="2" Text="Work phone" Foreground="Gray"/>
+                            <TextBox Grid.Row="1" Text="{Binding SelectedItem.EmployeeCode, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
+                            <TextBox Grid.Row="2" Text="{Binding SelectedItem.WorkPhone, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
                         </Grid>
 
                         <Grid Grid.Row="1" Grid.Column="2">
@@ -109,8 +109,8 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
 
-                            <Label Grid.Row="1" FontSize="6" Content="Hourly wage"/>
-                            <Label Grid.Row="2" FontSize="6" Content="Cell phone"/>
+                            <Label Grid.Row="1" FontSize="10" Content="Hourly wage"/>
+                            <Label Grid.Row="2" FontSize="10" Content="Cell phone"/>
                         </Grid>
 
                         <Grid Grid.Row="1" Grid.Column="3">
@@ -120,8 +120,8 @@
                                 <RowDefinition Height="2*"/>
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
-                            <ComboBox Grid.Row="1"/>
-                            <TextBox Grid.Row="2" Text="Cell phone" Foreground="Gray"/>
+                            <ComboBox Grid.Row="1" ItemsSource="{x:Static inf:ComboBoxData.HourlyWages}"/>
+                            <TextBox Grid.Row="2" Text="{Binding SelectedItem.CellPhone, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
                         </Grid>
 
                         <!--Third Row -->
@@ -134,9 +134,9 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
 
-                            <Label Grid.Row="1" FontSize="6" Content="Address"/>
-                            <Label Grid.Row="2" FontSize="6" Content="City"/>
-                            <Label Grid.Row="3" FontSize="6" Content="Country"/>
+                            <Label Grid.Row="1" FontSize="10" Content="Address"/>
+                            <Label Grid.Row="2" FontSize="10" Content="City"/>
+                            <Label Grid.Row="3" FontSize="10" Content="Country"/>
                         </Grid>
 
                         <Grid Grid.Row="2" Grid.Column="1">
@@ -148,9 +148,9 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
 
-                            <TextBox Grid.Row="1" Text="Address" Foreground="Gray"/>
-                            <TextBox Grid.Row="2" Text="City" Foreground="Gray"/>
-                            <ComboBox Grid.Row="3" FontSize="6" />
+                            <TextBox Grid.Row="1" Text="{Binding SelectedItem.Address, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
+                            <TextBox Grid.Row="2" Text="{Binding SelectedItem.City, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
+                            <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{x:Static inf:ComboBoxData.Countries}" FontSize="6" />
                         </Grid>
 
                         <Grid Grid.Row="2" Grid.Column="2">
@@ -162,9 +162,9 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
 
-                            <Label Grid.Row="1" FontSize="6" Content="Address2"/>
-                            <Label Grid.Row="2" FontSize="6" Content="Zip"/>
-                            <Label Grid.Row="3" FontSize="6" Content="State/province"/>
+                            <Label Grid.Row="1" FontSize="10" Content="Address2"/>
+                            <Label Grid.Row="2" FontSize="10" Content="Zip"/>
+                            <Label Grid.Row="3" FontSize="10" Content="State/province"/>
                         </Grid>
 
                         <Grid Grid.Row="2" Grid.Column="3">
@@ -176,9 +176,9 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
 
-                            <TextBox Grid.Row="1" Text="Address2" Foreground="Gray"/>
-                            <TextBox Grid.Row="2" Text="Zip" Foreground="Gray"/>
-                            <ComboBox Grid.Row="3" FontSize="6" />
+                            <TextBox Grid.Row="1" Text="{Binding SelectedItem.Address2, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
+                            <TextBox Grid.Row="2" Text="{Binding SelectedItem.Zip, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
+                            <ComboBox Grid.Row="3" ItemsSource="{x:Static inf:ComboBoxData.States}"  FontSize="10" />
                         </Grid>
                         <!--Fourth Row -->
                         <Grid Grid.Row="3" Grid.Column="0">
@@ -191,10 +191,10 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
 
-                            <Label Grid.Row="1" FontSize="6" Content="Email"/>
-                            <Label Grid.Row="2" FontSize="6" Content="Pin code"/>
-                            <Label Grid.Row="3" FontSize="6" Content="Service Provider"/>
-                            <Label Grid.Row="4" FontSize="6" Content="Booking group"/>
+                            <Label Grid.Row="1" FontSize="10" Content="Email"/>
+                            <Label Grid.Row="2" FontSize="10" Content="Pin code"/>
+                            <Label Background="Red" Grid.Row="3" FontSize="10" Content="Service Provider"/>
+                            <Label Background="Red" Grid.Row="4" FontSize="10" Content="Booking group"/>
                         </Grid>
 
                         <Grid Grid.Row="3" Grid.Column="1">
@@ -207,10 +207,10 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
 
-                            <TextBox Grid.Row="1" Text="Email" Foreground="Gray"/>
-                            <TextBox Grid.Row="2" Text="Pin Code" Foreground="Gray"/>
-                            <ComboBox Grid.Row="3" />
-                            <ComboBox Grid.Row="4" />
+                            <TextBox Grid.Row="1" Text="{Binding SelectedItem.Email, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
+                            <TextBox Grid.Row="2" Text="{Binding SelectedItem.PinCode, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
+                            <ComboBox Grid.Row="3" Grid.Column="1"/>
+                            <ComboBox Grid.Row="4" Grid.Column="1"/>
                         </Grid>
                         <Grid Grid.Row="3" Grid.Column="2">
                             <Grid.RowDefinitions>
@@ -222,10 +222,10 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
 
-                            <Label Grid.Row="1" FontSize="6" Content="Password"/>
-                            <Label Grid.Row="2" FontSize="6" Content="Access Permision"/>
-                            <Label Grid.Row="3" FontSize="6" Content="Service Provider"/>
-                            <Label Grid.Row="4" FontSize="6" Content="Assigned Location"/>
+                            <Label Grid.Row="1" FontSize="10" Content="Password"/>
+                            <Label Grid.Row="2" FontSize="10" Content="Access Permision"/>
+                            <Label Background="Red" Grid.Row="3" FontSize="10" Content="Service Provider"/>
+                            <Label Background="Red" Grid.Row="4" FontSize="10" Content="Assigned Location"/>
                         </Grid>
 
                         <Grid Grid.Row="3" Grid.Column="4">
@@ -239,8 +239,8 @@
                             </Grid.RowDefinitions>
 
                             <PasswordBox Grid.Row="1" Foreground="Gray"/>
-                            <ComboBox Grid.Row="2" />
-                            <ComboBox Grid.Row="3" />
+                            <ComboBox  Name="AccessPermission" Grid.Row="2" Grid.Column="1" ItemsSource="{x:Static inf:ComboBoxData.AccessPermission}" />
+                            <ComboBox Grid.Row="3" Grid.Column="1"  />
                         </Grid>
 
                     </Grid>
@@ -248,30 +248,15 @@
             </TabControl>
         </Grid>
 
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-
-            <Grid Grid.Column="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-                <Button Grid.Column="0" Content="Save" Margin="0,0,1,0" Command="{Binding SaveCommand}" CommandParameter="{x:Static inf:ViewNames.EmployeesView}"/>
-                <Button Grid.Column="1" Content="Cancel" Margin="1,0,0,0" Command="{Binding CancelCommand}" CommandParameter="{x:Static inf:ViewNames.EmployeesView}"/>
-            </Grid>
+            <StackPanel Orientation="Horizontal">
+                <Button Grid.Column="0"  Width="100px" Height="40px" Content="Save" Margin="10,0,1,0" Command="{Binding SaveCommand}" CommandParameter="{x:Static inf:ViewNames.EmployeesView}"/>
+                <Button Grid.Column="0" Width="100px" Height="40px" Content="Cancel" Margin="10,0,1,0" Command="{Binding CancelCommand}" CommandParameter="{x:Static inf:ViewNames.EmployeesView}"/>
+            </StackPanel>
+            
         </Grid>
     </Grid>
 </UserControl>

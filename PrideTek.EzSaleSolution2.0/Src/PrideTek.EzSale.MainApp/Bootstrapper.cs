@@ -9,6 +9,12 @@ using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using PrideTek.EmployeeModule;
 using PrideTek.Shell.Core.Navigation;
+using PrideTek.EzSale.ClientService;
+using PrideTek.EzSale.DAL;
+using Prism.Regions;
+using System.Windows.Controls;
+using PrideTek.EzSale.Infrastructure;
+using PrideTek.EzSale.StatusBarModule;
 
 namespace PrideTek.EzSale.MainApp
 {
@@ -29,6 +35,7 @@ namespace PrideTek.EzSale.MainApp
         {
             ModuleCatalog catalog = new ModuleCatalog();
             catalog.AddModule(typeof(EmployeeMod));
+            catalog.AddModule(typeof(StatusBarMod));
 
             return catalog;
         }
@@ -38,7 +45,14 @@ namespace PrideTek.EzSale.MainApp
             base.ConfigureContainer();
 
             Container.RegisterType<INavigationManager, NavigationManager>(new ContainerControlledLifetimeManager());
-            //Container.RegisterType<IEmployeeToolbarViewModel, EmployeeToolbarViewModel>();
+            Container.RegisterType<IGenericClientService, GenericClientService>();
+            Container.RegisterType<IGenericRepository, GenericRepository>();
+        }
+        protected override RegionAdapterMappings ConfigureRegionAdapterMappings()
+        {
+            RegionAdapterMappings mappings = base.ConfigureRegionAdapterMappings();
+            mappings.RegisterMapping(typeof(StackPanel), Container.Resolve<StackPanelRegionAdapter>());
+            return mappings;
         }
     }
 }

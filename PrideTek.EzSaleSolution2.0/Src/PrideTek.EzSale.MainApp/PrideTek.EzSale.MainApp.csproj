@@ -35,6 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
@@ -64,6 +72,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Wpf.6.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
@@ -135,9 +144,21 @@
       <Project>{96ba7bb1-d1dc-4fbf-a1c9-2eea9184bf77}</Project>
       <Name>PrideTek.EmployeeModule</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PrideTek.EzSale.ClientService\PrideTek.EzSale.ClientService.csproj">
+      <Project>{FD4EA5AC-7796-43A2-B21A-A9B6D2AB603E}</Project>
+      <Name>PrideTek.EzSale.ClientService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrideTek.EzSale.DAL\PrideTek.EzSale.DAL.csproj">
+      <Project>{F287BC44-8BD4-4B26-BA71-D85371A26BA8}</Project>
+      <Name>PrideTek.EzSale.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PrideTek.EzSale.Infrastructure\PrideTek.EzSale.Infrastructure.csproj">
       <Project>{902477e1-d57c-4530-b676-67d84f297fc1}</Project>
       <Name>PrideTek.EzSale.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrideTek.EzSale.StatusBarModule\PrideTek.EzSale.StatusBarModule.csproj">
+      <Project>{71DE92EE-EF26-4D56-803B-6B459FF5B575}</Project>
+      <Name>PrideTek.EzSale.StatusBarModule</Name>
     </ProjectReference>
     <ProjectReference Include="..\PrideTek.Shell.Common\PrideTek.Shell.Common.csproj">
       <Project>{40535083-398d-4fed-9b71-012b03205e13}</Project>

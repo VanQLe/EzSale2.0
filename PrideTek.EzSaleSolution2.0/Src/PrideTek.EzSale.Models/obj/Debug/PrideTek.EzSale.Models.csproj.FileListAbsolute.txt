@@ -1,0 +1,9 @@
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Models\obj\Debug\PrideTek.EzSale.Models.csprojResolveAssemblyReference.cache
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Models\obj\Debug\PrideTek.EzSale.Models.Properties.Resources.resources
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Models\obj\Debug\PrideTek.EzSale.Models.csproj.GenerateResource.Cache
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Models\bin\Debug\PrideTek.EzSale.Models.dll
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Models\bin\Debug\PrideTek.EzSale.Models.pdb
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Models\bin\Debug\PrideTek.Shell.Common.dll
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Models\bin\Debug\PrideTek.Shell.Common.pdb
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Models\obj\Debug\PrideTek.EzSale.Models.dll
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Models\obj\Debug\PrideTek.EzSale.Models.pdb

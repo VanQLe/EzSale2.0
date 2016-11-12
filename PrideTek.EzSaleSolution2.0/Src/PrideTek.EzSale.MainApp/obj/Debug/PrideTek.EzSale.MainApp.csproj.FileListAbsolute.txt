@@ -36,3 +36,15 @@ C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.M
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\PrideTek.EzSale.Infrastructure.pdb
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\PrideTek.Shell.Common.pdb
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\PrideTek.Shell.Core.pdb
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\EntityFramework.dll
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\EntityFramework.xml
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\PrideTek.EzSale.ClientService.dll
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\PrideTek.EzSale.Models.dll
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\PrideTek.EzSale.DAL.dll
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\PrideTek.EzSale.ClientService.pdb
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\PrideTek.EzSale.Models.pdb
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\PrideTek.EzSale.DAL.pdb
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\PrideTek.EzSale.StatusBarModule.dll
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\PrideTek.EzSale.StatusBarModule.pdb

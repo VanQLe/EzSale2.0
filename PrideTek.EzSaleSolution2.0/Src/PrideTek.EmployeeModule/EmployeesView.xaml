@@ -5,18 +5,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PrideTek.EmployeeModule"
              xmlns:inf="clr-namespace:PrideTek.EzSale.Infrastructure;assembly=PrideTek.EzSale.Infrastructure"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:data="clr-namespace:PrideTek.EzSale.Models.Entities;assembly=PrideTek.EzSale.Models"
+             xmlns:ie="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:converters="clr-namespace:PrideTek.Shell.Core;assembly=PrideTek.Shell.Core"
              mc:Ignorable="d" 
+             
              d:DesignHeight="400" d:DesignWidth="400">
-
+    <UserControl.Resources>
+        <converters:DebugDataBindingConverter x:Key="DebugDataBindingConverter" />
+    </UserControl.Resources>
+   
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="8*" />
-            <RowDefinition />
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Background="LightBlue">
+        <Grid Grid.Row="0" Background="LightBlue" Margin="0,-5,0,5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -51,14 +59,105 @@
                 <ComboBoxItem Tag="Both">Both</ComboBoxItem>
             </ComboBox>
 
-            <Button Grid.Column="3" Margin="8">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="../Images/SearchIcon.jpg"/>
-                    <Label Content="Search" FontSize="8" Padding="3"/>
-                </StackPanel>
+            <Button Grid.Column="3" Margin="8" >
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/PrideTek.EzSale.Infrastructure;Component/images/SearchIcon.jpg" />
+                        <Label Content="Search" Padding="1"/>
+                    </StackPanel>
+                </Button.Content>
+                
             </Button>
+
+
         </Grid>
         <Separator Grid.Row="1" VerticalAlignment="Bottom"/>
+
+        <Grid Name="ContentGrid" Grid.Row="2">
+            <!--<ListBox x:Name="EmployeeListBox" ItemsSource="{Binding EmployeeCollection}" DockPanel.Dock="Bottom">
+                <ListBox.Resources>
+                    <DataTemplate DataType="{x:Type data:Employee}">
+                        <TextBlock>
+                        <Run FontWeight="Bold">First Name:</Run>
+                        <Run Text="{Binding FirstName}"/>
+                        <Run FontWeight="Bold">Last Name:</Run>
+                        <Run Text="{Binding LastName}"/>
+                        <Run FontWeight="Bold">Email:</Run>
+                        <Run Text="{Binding Email}"/>
+                        </TextBlock>
+                    </DataTemplate>
+                </ListBox.Resources>
+                <ie:Interaction.Triggers>
+                    <ie:EventTrigger EventName="SelectionChanged">
+                        <ie:InvokeCommandAction Command="{Binding SelectedItemChangedCommand}"  CommandParameter="{Binding ElementName=EmployeeListBox, Path=SelectedItem}"/>
+                    </ie:EventTrigger>
+                </ie:Interaction.Triggers>
+            </ListBox>-->
+            <StackPanel Orientation="Vertical">
+                <DataGrid  ItemsSource="{Binding EmployeeCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RowDetailsVisibilityMode="VisibleWhenSelected" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="False" >
+                    <DataGrid.Columns>
+                        <DataGridCheckBoxColumn CanUserSort="False" IsReadOnly="False" Binding="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                            <DataGridCheckBoxColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <Button Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=DataGrid}, Converter={StaticResource DebugDataBindingConverter}}" Background="Transparent">
+                                        <Button.Content>
+                                            <StackPanel>
+                                                <Image Source="/PrideTek.EzSale.Infrastructure;Component/images/Trash.jpg" Width="50px" Height="50px" />
+                                            </StackPanel>
+                                        </Button.Content>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridCheckBoxColumn.HeaderTemplate>
+                            
+                        </DataGridCheckBoxColumn>
+
+                        <DataGridTextColumn  IsReadOnly="True" x:Name="firstNameColumn" Binding="{Binding Employee.FirstName}" Header="First Name" Width="SizeToHeader" />
+                        <DataGridTextColumn IsReadOnly="True" x:Name="lastNameColumn" Binding="{Binding Employee.LastName}" Header="Last Name" Width="SizeToHeader" />
+                        <DataGridTextColumn IsReadOnly="True" x:Name="emailColumn" Binding="{Binding Employee.Email}" Header="Email" Width="SizeToHeader" />
+                    </DataGrid.Columns>
+                    <!--<ie:Interaction.Triggers>
+                    <ie:EventTrigger EventName="SelectionChanged">
+                        <ie:InvokeCommandAction Command="{Binding SelectedItemChangedCommand}"  CommandParameter="{Binding ElementName=EmployeeListBox, Path=SelectedItem}"/>
+                    </ie:EventTrigger>
+                </ie:Interaction.Triggers>-->
+
+                    <!--<DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                         Value="True">
+                                <Setter Property="Background"
+                            Value="Gray" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.CellStyle>-->
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Background" Value="White"/>
+                            <Setter Property="FontWeight" Value="Normal"/>
+                            <Style.Triggers>
+                                <Trigger Property="AlternationIndex" Value="1">
+                                    <Setter Property="Background" Value="Wheat"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Khaki"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.RowStyle>
+                </DataGrid>
+
+            </StackPanel>
+           
+        </Grid>
+
+        <Grid Name="InfoGrid" Grid.Row="3">
+          
+        </Grid>
     </Grid>
+    
+    
 </UserControl>
   

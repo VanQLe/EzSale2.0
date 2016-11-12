@@ -25,3 +25,6 @@ C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.I
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Infrastructure\bin\Debug\Prism.Wpf.xml
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Infrastructure\obj\Debug\PrideTek.EzSale.Infrastructure.dll
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Infrastructure\obj\Debug\PrideTek.EzSale.Infrastructure.pdb
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Infrastructure\obj\Debug\PrideTek.EzSale.Infrastructure.g.resources
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Infrastructure\bin\Debug\PrideTek.EzSale.Models.dll
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Infrastructure\bin\Debug\PrideTek.EzSale.Models.pdb

@@ -80,6 +80,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\DebugBindingConverter.cs" />
     <Compile Include="Navigation\INavigationManager.cs" />
     <Compile Include="Navigation\NavigationItem.cs" />
     <Compile Include="Navigation\NavigationManager.cs" />

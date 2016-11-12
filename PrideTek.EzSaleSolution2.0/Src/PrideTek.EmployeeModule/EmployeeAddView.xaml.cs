@@ -1,5 +1,6 @@
 ﻿using PrideTek.EmployeeModule.Interfaces;
 using PrideTek.Shell.Common.Interfaces;
+using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Linq;

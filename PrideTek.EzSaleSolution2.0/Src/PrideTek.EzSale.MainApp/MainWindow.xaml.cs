@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Practices.Unity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace PrideTek.EzSale.MainApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+                public MainWindow()
         {
             InitializeComponent();
         }

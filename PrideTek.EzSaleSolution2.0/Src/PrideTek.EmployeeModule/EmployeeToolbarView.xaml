@@ -12,11 +12,11 @@
         <MenuItem Header="{Binding ViewHeader}" Width="150">
             <MenuItem Header="Employees"  Command="{Binding NavCommand}" CommandParameter="{x:Static inf:ViewNames.EmployeesView}">
                 <MenuItem.Icon>
-                    <Image Source="../Images/DashedLines.gif" />
+                    <Image Source="/PrideTek.EzSale.Infrastructure;Component/images/DashedLines.gif" />
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem.Icon>
-                <Image Source="../Images/UserIcon.png"/>
+                <Image Source="/PrideTek.EzSale.Infrastructure;Component/images/UserIcon.png"/>
             </MenuItem.Icon>
         </MenuItem>
     </Menu>

@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <Grid Name="StatusGrid" Grid.Row="0" Background="Honeydew">
-            <ItemsControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.StatusRegion }" />
+            <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.StatusRegion }" />
         </Grid>
 
         <Grid Grid.Row="1" Background="Teal" Name="SettingGrid">
@@ -30,16 +30,16 @@
 
             <Grid Name="TitleGrid">
                 <StackPanel Orientation="Horizontal">
-                    <Image Margin="5" Source="../Images/EzSaleLogo.jpg"/>
+                    <Image Margin="5" Source="/PrideTek.EzSale.Infrastructure;Component/images/EzSaleLogo.jpg"/>
                     <Label Margin="5" Content="EzSale" Foreground="White"/>
                 </StackPanel>
             </Grid>
 
             <Grid Grid.Column="4">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="../Images/ColorWheel.jpg" Margin="5"/>
-                    <Image Source="../Images/FlagLogo.png" Margin="5"/>
-                    <Image Source="../Images/SettingLogo.png" />
+                    <Image Source="/PrideTek.EzSale.Infrastructure;Component/images/ColorWheel.jpg" Margin="5"/>
+                    <Image Source="/PrideTek.EzSale.Infrastructure;Component/images/FlagLogo.png" Margin="5"/>
+                    <Image Source="/PrideTek.EzSale.Infrastructure;Component/images/SettingLogo.png" />
                 </StackPanel>
             </Grid>
         </Grid>
@@ -55,11 +55,8 @@
             </Grid>
 
             <Grid Name="ContentRegionGrid" Grid.Column="1">
-                <ContentControl  prism:RegionManager.RegionName="{x:Static inf:RegionNames.ContentRegion }" />
-
+                <ContentControl  prism:RegionManager.RegionName="{x:Static inf:RegionNames.ContentRegion }" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             </Grid>
-
-
         </Grid>
 
 

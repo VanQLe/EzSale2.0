@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Prototyping.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
@@ -62,6 +63,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Wpf.6.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -94,6 +97,7 @@
     </Compile>
     <Compile Include="EmployeeToolbarViewModel.cs" />
     <Compile Include="Interfaces\IEmployeeAddViewModel.cs" />
+    <Compile Include="Interfaces\IEmployeesListViewModel.cs" />
     <Compile Include="Interfaces\IEmployeesViewModel.cs" />
     <Compile Include="Interfaces\IEmployeeToolbarViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -121,9 +125,21 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PrideTek.EzSale.ClientService\PrideTek.EzSale.ClientService.csproj">
+      <Project>{FD4EA5AC-7796-43A2-B21A-A9B6D2AB603E}</Project>
+      <Name>PrideTek.EzSale.ClientService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrideTek.EzSale.DAL\PrideTek.EzSale.DAL.csproj">
+      <Project>{F287BC44-8BD4-4B26-BA71-D85371A26BA8}</Project>
+      <Name>PrideTek.EzSale.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PrideTek.EzSale.Infrastructure\PrideTek.EzSale.Infrastructure.csproj">
       <Project>{902477e1-d57c-4530-b676-67d84f297fc1}</Project>
       <Name>PrideTek.EzSale.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrideTek.EzSale.Models\PrideTek.EzSale.Models.csproj">
+      <Project>{79ADB874-F02E-4D5A-BF84-DE744807E177}</Project>
+      <Name>PrideTek.EzSale.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\PrideTek.Shell.Common\PrideTek.Shell.Common.csproj">
       <Project>{40535083-398d-4fed-9b71-012b03205e13}</Project>

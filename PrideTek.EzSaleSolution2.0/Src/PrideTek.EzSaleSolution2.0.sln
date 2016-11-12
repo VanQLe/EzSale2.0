@@ -19,17 +19,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrideTek.Shell.Common", "Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrideTek.Shell.Core", "PrideTek.Shell.Core\PrideTek.Shell.Core.csproj", "{DBF43CD5-BE14-4202-9A9B-C10C72FD2625}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{0B53D701-49B8-4742-A0D7-F2A446A5F849}"
-	ProjectSection(SolutionItems) = preProject
-		..\Images\ColorWheel.jpg = ..\Images\ColorWheel.jpg
-		..\Images\ColorWheelLogo.png = ..\Images\ColorWheelLogo.png
-		..\Images\DashedLines.gif = ..\Images\DashedLines.gif
-		..\Images\EzSaleLogo.jpg = ..\Images\EzSaleLogo.jpg
-		..\Images\FlagLogo.png = ..\Images\FlagLogo.png
-		..\Images\SearchIcon.jpg = ..\Images\SearchIcon.jpg
-		..\Images\SettingLogo.png = ..\Images\SettingLogo.png
-		..\Images\UserIcon.png = ..\Images\UserIcon.png
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrideTek.EzSale.ClientService", "PrideTek.EzSale.ClientService\PrideTek.EzSale.ClientService.csproj", "{FD4EA5AC-7796-43A2-B21A-A9B6D2AB603E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrideTek.EzSale.Models", "PrideTek.EzSale.Models\PrideTek.EzSale.Models.csproj", "{79ADB874-F02E-4D5A-BF84-DE744807E177}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrideTek.EzSale.DAL", "PrideTek.EzSale.DAL\PrideTek.EzSale.DAL.csproj", "{F287BC44-8BD4-4B26-BA71-D85371A26BA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrideTek.EzSale.StatusBarModule", "PrideTek.EzSale.StatusBarModule\PrideTek.EzSale.StatusBarModule.csproj", "{71DE92EE-EF26-4D56-803B-6B459FF5B575}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +53,22 @@ Global
 		{DBF43CD5-BE14-4202-9A9B-C10C72FD2625}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBF43CD5-BE14-4202-9A9B-C10C72FD2625}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBF43CD5-BE14-4202-9A9B-C10C72FD2625}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD4EA5AC-7796-43A2-B21A-A9B6D2AB603E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD4EA5AC-7796-43A2-B21A-A9B6D2AB603E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD4EA5AC-7796-43A2-B21A-A9B6D2AB603E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD4EA5AC-7796-43A2-B21A-A9B6D2AB603E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79ADB874-F02E-4D5A-BF84-DE744807E177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79ADB874-F02E-4D5A-BF84-DE744807E177}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79ADB874-F02E-4D5A-BF84-DE744807E177}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79ADB874-F02E-4D5A-BF84-DE744807E177}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F287BC44-8BD4-4B26-BA71-D85371A26BA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F287BC44-8BD4-4B26-BA71-D85371A26BA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F287BC44-8BD4-4B26-BA71-D85371A26BA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F287BC44-8BD4-4B26-BA71-D85371A26BA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71DE92EE-EF26-4D56-803B-6B459FF5B575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71DE92EE-EF26-4D56-803B-6B459FF5B575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71DE92EE-EF26-4D56-803B-6B459FF5B575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71DE92EE-EF26-4D56-803B-6B459FF5B575}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,5 +77,6 @@ Global
 		{96BA7BB1-D1DC-4FBF-A1C9-2EEA9184BF77} = {F1E9A862-2B99-4F59-A16A-822E6D22720D}
 		{40535083-398D-4FED-9B71-012B03205E13} = {5ACD56BF-F619-4F00-8F6B-6F08C4CC9E0A}
 		{DBF43CD5-BE14-4202-9A9B-C10C72FD2625} = {5ACD56BF-F619-4F00-8F6B-6F08C4CC9E0A}
+		{71DE92EE-EF26-4D56-803B-6B459FF5B575} = {F1E9A862-2B99-4F59-A16A-822E6D22720D}
 	EndGlobalSection
 EndGlobal

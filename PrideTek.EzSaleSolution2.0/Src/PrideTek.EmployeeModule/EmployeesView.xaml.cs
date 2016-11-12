@@ -1,5 +1,6 @@
 ﻿using PrideTek.EmployeeModule.Interfaces;
 using PrideTek.Shell.Common.Interfaces;
+using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,13 +33,18 @@ namespace PrideTek.EmployeeModule
         {
             get
             {
-                return (IEmployeesViewModel)DataContext;
+                return (IViewModel)DataContext;
             }
 
             set
             {
                 DataContext = value;
             }
+        }
+
+        private void ListBox_Selected(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

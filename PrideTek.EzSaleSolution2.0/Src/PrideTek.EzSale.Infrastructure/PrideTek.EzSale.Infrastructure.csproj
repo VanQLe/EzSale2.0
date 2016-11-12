@@ -81,6 +81,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationCommands.cs" />
+    <Compile Include="ComboBoxData.cs" />
+    <Compile Include="Events.cs" />
     <Compile Include="ModuleBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -96,6 +98,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="RegionNames.cs" />
+    <Compile Include="StackPanelRegionAdapter.cs" />
     <Compile Include="ViewNames.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -109,6 +112,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PrideTek.EzSale.Models\PrideTek.EzSale.Models.csproj">
+      <Project>{79ADB874-F02E-4D5A-BF84-DE744807E177}</Project>
+      <Name>PrideTek.EzSale.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PrideTek.Shell.Common\PrideTek.Shell.Common.csproj">
       <Project>{40535083-398d-4fed-9b71-012b03205e13}</Project>
       <Name>PrideTek.Shell.Common</Name>
@@ -117,6 +124,19 @@
       <Project>{dbf43cd5-be14-4202-9a9b-c10c72fd2625}</Project>
       <Name>PrideTek.Shell.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ColorWheel.jpg" />
+    <Resource Include="Images\ColorWheelLogo.png" />
+    <Resource Include="Images\DashedLines.gif" />
+    <Resource Include="Images\EzSaleLogo.jpg" />
+    <Resource Include="Images\FlagLogo.png" />
+    <Resource Include="Images\SearchIcon.jpg" />
+    <Resource Include="Images\SettingLogo.png" />
+    <Resource Include="Images\UserIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Trash.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
