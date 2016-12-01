@@ -28,7 +28,9 @@ namespace PrideTek.EmployeeModule
 
         private IGenericClientService _clientService { get; set; }
 
-        private Employee SelectedEmployee { get; set; }
+        private string _sortByPropertyValue;
+        private string _sortByState;
+        //private List<string>
         public EmployeesViewModel(INavigationManager navManager, IGenericClientService clientService, IEventAggregator eventAggregator)
         {
             ViewHeader = "Employees";
@@ -37,24 +39,26 @@ namespace PrideTek.EmployeeModule
             _navItem = new NavigationItem();
             NavCommand = new DelegateCommand<string>(NavTo);
             DeleteCommand = new DelegateCommand(DeleteSelectedItems);
-
+            SortByPropertyValue = ComboBoxData.SortByPropertyValues[0];
+            SortByState = ComboBoxData.SortByEntityState[0];
             GetList();
-            SelectedItemChangedCommand = new DelegateCommand<Employee>(SelectedItemChangedEvent);
+            SelectedItemChangedCommand = new DelegateCommand<EmployeeWrapper>(SelectedItemChangedEvent);
         }
 
         private void DeleteSelectedItems()
         {
             if(MessageBox.Show("Are you sure to delete selected item(s)?","Warning!", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.Yes) == MessageBoxResult.Yes)
             {
-                foreach (var item in EmployeeItems.ToList())
+                foreach (var employeeWrapper in EmployeeItems.ToList())
                 {
-                    if (item.IsSelected)
+                    if (employeeWrapper.IsSelected)
                     {
-                        if (item != null)
+                        if (employeeWrapper != null)
                         {
-                            string Name = item.Employee.FirstName + " " + item.Employee.LastName;
-                            _clientService.Delete<Employee>(item.Employee);
-                            EmployeeItems.Remove(item);
+                            string Name = employeeWrapper./*.Employee.*/FirstName + " " + employeeWrapper./*.Employee.*/LastName;
+                            employeeWrapper./*Employee.*/IsDeleted = true;
+                            _clientService.Delete<Employee>(employeeWrapper.Model/*.Employee*/);
+                            EmployeeItems.Remove(employeeWrapper);
                             MessageBox.Show(Name + " was deleted");
                         }
                     }
@@ -64,8 +68,13 @@ namespace PrideTek.EmployeeModule
         }
 
         #region Display Employee list content
-        public DelegateCommand<Employee> SelectedItemChangedCommand { get; set; }
-
+        public DelegateCommand<EmployeeWrapper> SelectedItemChangedCommand { get; set; }
+        private EmployeeWrapper _selectedEmployee;
+        public EmployeeWrapper SelectedEmployee
+        {
+            get { return _selectedEmployee; }
+            set { SetField(ref _selectedEmployee, value); }
+        }
         private ListCollectionView _employeeCollection;
         public ListCollectionView EmployeeCollection
         {
@@ -79,8 +88,8 @@ namespace PrideTek.EmployeeModule
                 SetField(ref _employeeCollection, value);
             }
         }
-        private List<EmployeeItem> _employeeItems;
-        public List<EmployeeItem> EmployeeItems
+        private List<EmployeeWrapper> _employeeItems;
+        public List<EmployeeWrapper> EmployeeItems
         {
             get
             {
@@ -105,20 +114,101 @@ namespace PrideTek.EmployeeModule
             }
         }
 
-
-
         private List<Employee> _employees;
 
         private void GetList()
         {
+            Employees = new List<Employee>();
             Employees = _clientService.GetList<Employee>();
-            EmployeeItems = Employees.Select((item) => new EmployeeItem() { Employee = item, IsSelected=false }).ToList();
+            //Employees = Employees.OrderBy(o => o.FirstName).ToList() ;
+
+            if(Employees != null)
+            {
+                SortCollectionAndFilter();//sort the collection before displaying
+            }
+           
+            //foreach (var employee in Employees)
+            //{
+
+            //}
+            EmployeeItems = Employees.Select((item) => new EmployeeWrapper(item)).ToList();
             EmployeeCollection = new ListCollectionView(EmployeeItems);
         }
 
-        private void SelectedItemChangedEvent(Employee selectedItem)
+        private void SortCollectionAndFilter()
         {
-            //SelectedEmployee = new Employee();
+            bool activeState = true;
+
+            switch (SortByPropertyValue)
+            {
+                case "First Name":
+                    Employees = Employees.OrderBy(o => o.FirstName).ToList();
+                    break;
+                case "Last Name":
+                    Employees = Employees.OrderBy(o => o.LastName).ToList();
+                    break;
+                case "Email":
+                    Employees = Employees.OrderBy(o => o.Email).ToList();
+                    break;
+                case "Work Phone":
+                    Employees = Employees.OrderBy(o => o.WorkPhone).ToList();
+                    break;
+                case "Cell Phone":
+                    Employees = Employees.OrderBy(o => o.CellPhone).ToList();
+                    break;
+                case "Employee Code":
+                    Employees = Employees.OrderBy(o => o.PinCode).ToList();
+                    break;
+            }
+
+            switch (SortByState)
+            {
+                case "Active":
+                    FilterCollection(activeState);
+                    break;
+                case "Deleted":
+                    activeState = false;
+                    FilterCollection(activeState);
+                    break;
+                default://return both active and deleted entities
+                    break;
+            }
+
+        }
+
+        public void FilterCollection(bool activeState)
+        {
+            if (Employees != null)
+            {
+                if (!activeState)
+                {
+                    foreach (var employee in Employees.ToList())
+                    {
+                        if (employee.IsDeleted == false)
+                        {
+                            Employees.Remove(employee);
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (var employee in Employees.ToList())
+                    {
+                        if (employee.IsDeleted == true)
+                        {
+                            Employees.Remove(employee);
+                        }
+                    }
+                }
+            }
+           
+        }
+
+
+       
+        private void SelectedItemChangedEvent(EmployeeWrapper selectedItem)
+        {
+            //SelectedEmployee = new EmployeeWrapper();
             SelectedEmployee = selectedItem;
             NavTo(ViewNames.EmployeeAddView);//nav to EmployeeAddView
         }
@@ -140,18 +230,7 @@ namespace PrideTek.EmployeeModule
                 navigationContext.NavigationService.Region.Context = SelectedEmployee;
             }
         }
-
-
-        private string _statusBarText;
-        public string StatusBarText
-        {
-            get { return _statusBarText; }
-            set
-            {
-                SetField(ref _statusBarText, value);
-            }
-        }
-
+      
         #endregion
         public bool KeepAlive
         {
@@ -169,6 +248,32 @@ namespace PrideTek.EmployeeModule
             _navManager.NavigateTo(_navItem);
         }
 
+       public string SortByPropertyValue
+        {
+            get
+            {
+                return _sortByPropertyValue;
+            }
+            set
+            {
+                SetField(ref _sortByPropertyValue, value);
+                GetList();
+            }
+           
+        }
 
+        public string SortByState
+        {
+            get
+            {
+                return _sortByState;
+            }
+            set
+            {
+                SetField(ref _sortByState, value);
+                GetList();
+            }
+            
+        }
     }
 }

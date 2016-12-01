@@ -10,7 +10,6 @@ C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.S
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.StatusBarModule\bin\Debug\Prism.Unity.Wpf.dll
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.StatusBarModule\bin\Debug\Prism.Wpf.dll
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.StatusBarModule\bin\Debug\System.Windows.Interactivity.dll
-C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.StatusBarModule\bin\Debug\PrideTek.EzSale.Models.dll
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.StatusBarModule\bin\Debug\PrideTek.Shell.Common.dll
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.StatusBarModule\bin\Debug\PrideTek.EzSale.Infrastructure.pdb
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.StatusBarModule\bin\Debug\PrideTek.Shell.Core.pdb
@@ -22,7 +21,6 @@ C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.S
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.StatusBarModule\bin\Debug\Prism.xml
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.StatusBarModule\bin\Debug\Prism.Unity.Wpf.xml
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.StatusBarModule\bin\Debug\Prism.Wpf.xml
-C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.StatusBarModule\bin\Debug\PrideTek.EzSale.Models.pdb
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.StatusBarModule\bin\Debug\PrideTek.Shell.Common.pdb
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.StatusBarModule\obj\Debug\PrideTek.EzSale.StatusBarModule.csprojResolveAssemblyReference.cache
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.StatusBarModule\obj\Debug\PrideTek.EzSale.StatusBarModule.dll

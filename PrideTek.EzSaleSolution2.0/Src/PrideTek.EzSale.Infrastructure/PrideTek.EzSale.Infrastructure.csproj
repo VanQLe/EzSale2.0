@@ -82,7 +82,7 @@
   <ItemGroup>
     <Compile Include="ApplicationCommands.cs" />
     <Compile Include="ComboBoxData.cs" />
-    <Compile Include="Events.cs" />
+    <Compile Include="Events\Events.cs" />
     <Compile Include="ModuleBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

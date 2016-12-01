@@ -1,6 +1,7 @@
 ﻿using PrideTek.Shell.Common.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,11 +25,15 @@ namespace PrideTek.EzSale.Models.Entities
         private string _lastName;
         private string _firstName;
         private string _email;
+        private string _accessPermission;
 
         //Employee related information
         private string _password;
         private decimal? _hourlyWage;
         private int? _pinCode;
+
+        //Database property
+        private bool? _isDeleted = false;
 
         public override long? Id
         {
@@ -44,9 +49,9 @@ namespace PrideTek.EzSale.Models.Entities
             set
             {
                 _employeeId = value;
+                //SetField(ref _employeeId, value);
             }
         }
-
 
         public string FirstName
         {
@@ -58,6 +63,7 @@ namespace PrideTek.EzSale.Models.Entities
             set
             {
                 _firstName = value;
+                //SetField(ref _firstName, value);
             }
         }
         public string LastName
@@ -70,6 +76,7 @@ namespace PrideTek.EzSale.Models.Entities
             set
             {
                 _lastName = value;
+                //SetField(ref _lastName, value);
             }
         }
         public string Email
@@ -82,6 +89,7 @@ namespace PrideTek.EzSale.Models.Entities
             set
             {
                 _email = value;
+                //SetField(ref _email, value);
             }
         }
 
@@ -95,6 +103,7 @@ namespace PrideTek.EzSale.Models.Entities
             set
             {
                 _address = value;
+                // SetField(ref _address, value);
             }
         }
 
@@ -108,6 +117,7 @@ namespace PrideTek.EzSale.Models.Entities
             set
             {
                 _city = value;
+                //SetField(ref _city, value);
             }
         }
 
@@ -121,6 +131,7 @@ namespace PrideTek.EzSale.Models.Entities
             set
             {
                 _country = value;
+                //SetField(ref _country, value);
             }
         }
 
@@ -134,6 +145,7 @@ namespace PrideTek.EzSale.Models.Entities
             set
             {
                 _address2 = value;
+                //SetField(ref _address2, value);
             }
         }
 
@@ -147,6 +159,7 @@ namespace PrideTek.EzSale.Models.Entities
             set
             {
                 _zipCode = value;
+                //SetField(ref _zipCode, value);
             }
         }
 
@@ -160,6 +173,7 @@ namespace PrideTek.EzSale.Models.Entities
             set
             {
                 _state = value;
+                //SetField(ref _state, value);
             }
         }
 
@@ -173,6 +187,7 @@ namespace PrideTek.EzSale.Models.Entities
             set
             {
                 _gender = value;
+                //SetField(ref _gender, value);
             }
         }
 
@@ -186,6 +201,7 @@ namespace PrideTek.EzSale.Models.Entities
             set
             {
                 _workPhone = value;
+                //SetField(ref _workPhone, value);
             }
         }
 
@@ -199,6 +215,7 @@ namespace PrideTek.EzSale.Models.Entities
             set
             {
                 _cellPhone = value;
+                //SetField(ref _cellPhone, value);
             }
         }
 
@@ -212,6 +229,7 @@ namespace PrideTek.EzSale.Models.Entities
             set
             {
                 _dateOfBirth = value;
+                //SetField(ref _dateOfBirth, value);
             }
         }
 
@@ -225,6 +243,7 @@ namespace PrideTek.EzSale.Models.Entities
             set
             {
                 _hourlyWage = value;
+                //SetField(ref _hourlyWage, value);
             }
         }
 
@@ -238,6 +257,7 @@ namespace PrideTek.EzSale.Models.Entities
             set
             {
                 _password = value;
+                //SetField(ref _password, value);
             }
         }
 
@@ -251,19 +271,44 @@ namespace PrideTek.EzSale.Models.Entities
             set
             {
                 _pinCode = value;
+                //SetField(ref _pinCode, value);
             }
         }
 
-      
-
-        public override string ToString()
+        public bool? IsDeleted
         {
-            string result = "";
-            result += "This is an employee\n";
+            get
+            {
+                return _isDeleted;
+            }
 
-            result += String.Format("First Name:{0} Last Name: {1} Email: {2}", FirstName, LastName, Email);
-
-            return result;
+            set
+            {
+                _isDeleted = value;
+                //SetField(ref _isDeleted, value);
+            }
         }
+
+        public string AccessPermission
+        {
+            get
+            {
+                return _accessPermission;
+            }
+            set
+            {
+                _accessPermission = value;
+            }
+        }
+
+        //public override string ToString()
+        //{
+        //    string result = "";
+        //    result += "This is an employee\n";
+
+        //    result += String.Format("First Name:{0} Last Name: {1} Email: {2}", FirstName, LastName, Email);
+
+        //    return result;
+        //}
     }
 }

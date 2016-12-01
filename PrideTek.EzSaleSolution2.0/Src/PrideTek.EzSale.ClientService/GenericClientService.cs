@@ -33,7 +33,8 @@ namespace PrideTek.EzSale.ClientService
 
         public void Delete<T>(T entity) where T : Entity
         {
-            _repository.Delete<T>(entity) ;
+            Update<T>(entity);//update the IsDelete Boolean to be true.  Not actually delete the entity from the database
+            //_repository.Delete<T>(entity) ;
         }
 
         public void Update<T>(T entity) where T : Entity

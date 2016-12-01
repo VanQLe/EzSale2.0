@@ -42,9 +42,6 @@ namespace PrideTek.EmployeeModule
             }
         }
 
-        private void ListBox_Selected(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }

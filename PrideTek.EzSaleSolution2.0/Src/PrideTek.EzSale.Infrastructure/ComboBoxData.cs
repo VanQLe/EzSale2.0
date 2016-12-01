@@ -19,6 +19,10 @@ namespace PrideTek.EzSale.Infrastructure
             };
 
             AccessPermission = new List<string>() { "Company Administrator", "Employee" };
+
+            SortByPropertyValues = new List<string>() { "First Name", "Last Name", "Email", "Work Phone", "Cell Phone", "Employee Code" };
+
+            SortByEntityState = new List<string>() { "Active", "Deleted", "Both" };
         }
 
         public static List<decimal> HourlyWages { get; set; }
@@ -28,8 +32,9 @@ namespace PrideTek.EzSale.Infrastructure
         public static List<string> Countries { get; set; }
 
         public static List<string> AccessPermission { get; set; }
+
+        public static List<string> SortByPropertyValues { get; set; }
+
+        public static List<string> SortByEntityState { get; set; }
     }
-    
-
-
 }

@@ -15,7 +15,7 @@
     <UserControl.Resources>
         <converters:DebugDataBindingConverter x:Key="DebugDataBindingConverter" />
     </UserControl.Resources>
-   
+
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
@@ -35,7 +35,7 @@
             <Button Name="AddEmployee" Grid.Column="3" Content="+" FontSize="15"  HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding NavCommand}" CommandParameter="{x:Static inf:ViewNames.EmployeeAddView}"  />
         </Grid>
 
-        <Grid Name="SearchGrid" Grid.Row="1">
+        <Grid Name="SearchGrid" Grid.Row="1" Height="50px">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="1*"/>
@@ -44,21 +44,8 @@
             </Grid.ColumnDefinitions>
 
             <TextBox Name="SeachInput" Grid.Column="0" Margin="8" />
-            <ComboBox Grid.Column="1" Margin="8">
-                <ComboBoxItem Tag="FirstName" IsSelected="True">First Name</ComboBoxItem>
-                <ComboBoxItem Tag="LastName">Last Name</ComboBoxItem>
-                <ComboBoxItem Tag="Email">Email</ComboBoxItem>
-                <ComboBoxItem Tag="WorkPhone">Work Phone</ComboBoxItem>
-                <ComboBoxItem Tag="CellPhone">Cell Phone</ComboBoxItem>
-                <ComboBoxItem Tag="EmployeeCode">Employee code</ComboBoxItem>
-            </ComboBox>
-
-            <ComboBox Grid.Column="2" Margin="8">
-                <ComboBoxItem Tag="Active" IsSelected="True">Active</ComboBoxItem>
-                <ComboBoxItem Tag="Deleted">Deleted</ComboBoxItem>
-                <ComboBoxItem Tag="Both">Both</ComboBoxItem>
-            </ComboBox>
-
+            <ComboBox  Grid.Column="1" Margin="8" ItemsSource="{x:Static inf:ComboBoxData.SortByPropertyValues}" SelectedItem ="{Binding SortByPropertyValue, UpdateSourceTrigger=PropertyChanged}"/>
+            <ComboBox Grid.Column="2" Margin="8" ItemsSource="{x:Static inf:ComboBoxData.SortByEntityState}" SelectedItem="{Binding SortByState, UpdateSourceTrigger=PropertyChanged}"/>
             <Button Grid.Column="3" Margin="8" >
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
@@ -66,62 +53,19 @@
                         <Label Content="Search" Padding="1"/>
                     </StackPanel>
                 </Button.Content>
-                
             </Button>
-
 
         </Grid>
         <Separator Grid.Row="1" VerticalAlignment="Bottom"/>
-
         <Grid Name="ContentGrid" Grid.Row="2">
-            <!--<ListBox x:Name="EmployeeListBox" ItemsSource="{Binding EmployeeCollection}" DockPanel.Dock="Bottom">
-                <ListBox.Resources>
-                    <DataTemplate DataType="{x:Type data:Employee}">
-                        <TextBlock>
-                        <Run FontWeight="Bold">First Name:</Run>
-                        <Run Text="{Binding FirstName}"/>
-                        <Run FontWeight="Bold">Last Name:</Run>
-                        <Run Text="{Binding LastName}"/>
-                        <Run FontWeight="Bold">Email:</Run>
-                        <Run Text="{Binding Email}"/>
-                        </TextBlock>
-                    </DataTemplate>
-                </ListBox.Resources>
-                <ie:Interaction.Triggers>
-                    <ie:EventTrigger EventName="SelectionChanged">
-                        <ie:InvokeCommandAction Command="{Binding SelectedItemChangedCommand}"  CommandParameter="{Binding ElementName=EmployeeListBox, Path=SelectedItem}"/>
-                    </ie:EventTrigger>
-                </ie:Interaction.Triggers>
-            </ListBox>-->
-            <StackPanel Orientation="Vertical">
-                <DataGrid  ItemsSource="{Binding EmployeeCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RowDetailsVisibilityMode="VisibleWhenSelected" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="False" >
-                    <DataGrid.Columns>
-                        <DataGridCheckBoxColumn CanUserSort="False" IsReadOnly="False" Binding="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
-                            <DataGridCheckBoxColumn.HeaderTemplate>
-                                <DataTemplate>
-                                    <Button Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=DataGrid}, Converter={StaticResource DebugDataBindingConverter}}" Background="Transparent">
-                                        <Button.Content>
-                                            <StackPanel>
-                                                <Image Source="/PrideTek.EzSale.Infrastructure;Component/images/Trash.jpg" Width="50px" Height="50px" />
-                                            </StackPanel>
-                                        </Button.Content>
-                                    </Button>
-                                </DataTemplate>
-                            </DataGridCheckBoxColumn.HeaderTemplate>
-                            
-                        </DataGridCheckBoxColumn>
-
-                        <DataGridTextColumn  IsReadOnly="True" x:Name="firstNameColumn" Binding="{Binding Employee.FirstName}" Header="First Name" Width="SizeToHeader" />
-                        <DataGridTextColumn IsReadOnly="True" x:Name="lastNameColumn" Binding="{Binding Employee.LastName}" Header="Last Name" Width="SizeToHeader" />
-                        <DataGridTextColumn IsReadOnly="True" x:Name="emailColumn" Binding="{Binding Employee.Email}" Header="Email" Width="SizeToHeader" />
-                    </DataGrid.Columns>
-                    <!--<ie:Interaction.Triggers>
-                    <ie:EventTrigger EventName="SelectionChanged">
-                        <ie:InvokeCommandAction Command="{Binding SelectedItemChangedCommand}"  CommandParameter="{Binding ElementName=EmployeeListBox, Path=SelectedItem}"/>
-                    </ie:EventTrigger>
-                </ie:Interaction.Triggers>-->
-
-                    <!--<DataGrid.CellStyle>
+            <DataGrid  x:Name="EmployeeDataGrid" ItemsSource="{Binding EmployeeCollection, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserAddRows="False"  RowDetailsVisibilityMode="VisibleWhenSelected" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="False" >
+                <DataGrid.InputBindings>
+                    <MouseBinding
+                        MouseAction="LeftDoubleClick"
+                        Command="{Binding SelectedItemChangedCommand}"
+                        CommandParameter="{Binding ElementName=EmployeeDataGrid, Path=SelectedItem}"/>  
+                </DataGrid.InputBindings>
+                <DataGrid.CellStyle>
                     <Style TargetType="DataGridCell">
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver"
@@ -131,33 +75,72 @@
                             </Trigger>
                         </Style.Triggers>
                     </Style>
-                </DataGrid.CellStyle>-->
-                    <DataGrid.RowStyle>
-                        <Style TargetType="DataGridRow">
-                            <Setter Property="Background" Value="White"/>
-                            <Setter Property="FontWeight" Value="Normal"/>
-                            <Style.Triggers>
-                                <Trigger Property="AlternationIndex" Value="1">
-                                    <Setter Property="Background" Value="Wheat"/>
-                                    <Setter Property="FontWeight" Value="Bold"/>
-                                </Trigger>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="Khaki"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DataGrid.RowStyle>
-                </DataGrid>
+                </DataGrid.CellStyle>
 
-            </StackPanel>
-           
+                <!--<DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="FontWeight" Value="Normal"/>
+                        <Style.Triggers>
+                            <Trigger Property="AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="Wheat"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Khaki"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>-->
+
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="FontWeight" Value="Normal"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsDeleted}" Value="True">
+                                <Setter Property="Background" Value="Red"></Setter>
+                            </DataTrigger>
+                            <Trigger Property="AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="Wheat"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Khaki"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+
+                <DataGrid.Columns>
+                    <DataGridCheckBoxColumn CanUserSort="False" IsReadOnly="False" Binding="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                        <DataGridCheckBoxColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <Button Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=DataGrid}, Converter={StaticResource DebugDataBindingConverter}}" Background="Transparent">
+                                    <Button.Content>
+                                        <StackPanel>
+                                            <Image Source="/PrideTek.EzSale.Infrastructure;Component/images/Trash.jpg" Width="50px" Height="30px" />
+                                        </StackPanel>
+                                    </Button.Content>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridCheckBoxColumn.HeaderTemplate>
+                    </DataGridCheckBoxColumn>
+
+                    <DataGridTextColumn  IsReadOnly="True" x:Name="nameColumn" Binding="{Binding FirstName}" Header="First Name" Width="0.25*" />
+                    <DataGridTextColumn  IsReadOnly="True" x:Name="AccessPermissionColumn" Binding="{Binding AccessPermission}" Header="Access Permision" Width="0.25*" />
+                    <DataGridTextColumn  IsReadOnly="True" x:Name="CellPhoneColumn" Binding="{Binding Email}" Header="Email" Width="0.25*" />
+                    <DataGridTextColumn IsReadOnly="True" x:Name="lastNameColumn" Binding="{Binding CellPhone}" Header="Cell phone" Width="0.25*" />
+                    <DataGridTextColumn IsReadOnly="True" x:Name="emailColumn" Binding="{Binding PinCode}" Header="Employee code" Width="0.25*" />
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
 
         <Grid Name="InfoGrid" Grid.Row="3">
-          
+
         </Grid>
     </Grid>
-    
-    
+
+
 </UserControl>
   

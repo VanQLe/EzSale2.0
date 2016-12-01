@@ -21,6 +21,22 @@ namespace PrideTek.EzSale.Models.Entities
                 SetField(ref _isSelected, value);
             }
         }
+        //private string _fullName;
+        public string FullName
+        {
+            get
+            {
+                return this.Employee.FirstName + " " + this.Employee.LastName;
+            }
+        }
+
+        public bool? IsDeleted
+        {
+            get
+            {
+               return Employee.IsDeleted;
+            }
+        }
 
         public Employee Employee
         {

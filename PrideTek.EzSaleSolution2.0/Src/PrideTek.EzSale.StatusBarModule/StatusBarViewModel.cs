@@ -1,5 +1,7 @@
-﻿using PrideTek.EzSale.StatusBarModule.Interfaces;
+﻿using PrideTek.EzSale.Infrastructure.Events;
+using PrideTek.EzSale.StatusBarModule.Interfaces;
 using PrideTek.Shell.Common.ViewModels;
+using Prism.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +27,14 @@ namespace PrideTek.EzSale.StatusBarModule
             }
         }
 
-        public StatusBarViewModel()
+        public StatusBarViewModel(IEventAggregator eventAggregator)
         {
-            StatusBarText = "Hello";
+            eventAggregator.GetEvent<StatusBarEvent>().Subscribe(Update);
+        }
+
+        private void Update(string msg)
+        {
+            StatusBarText = msg;
         }
     }
 }
