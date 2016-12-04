@@ -15,6 +15,7 @@ using System.Windows;
 using PrideTek.Shell.Common.ViewModels;
 using PrideTek.EzSale.ClientService;
 using PrideTek.EzSale.Infrastructure.Events;
+using PrideTek.Shell.Common.Views.Services.MessageDialog;
 
 namespace PrideTek.EmployeeModule
 {
@@ -22,11 +23,12 @@ namespace PrideTek.EmployeeModule
     {
         public string ViewTitle { get; set; }
         public string TabTitle { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public EmployeeWrapper SelectedItem { get; set; }
-        public DelegateCommand<string> SaveCommand { get; private set; }
+        //public string FirstName { get; set; }
+        //public string LastName { get; set; }
+        private EmployeeWrapper _selectedItem;
+        public DelegateCommand SaveCommand { get; private set; }
         public DelegateCommand<string> CancelCommand { get; private set; }
+        public DelegateCommand ResetCommand { get; set; }
         private INavigationManager _navManager { get; set; }
         private IGenericClientService _clientService { get; set; }
         private IEventAggregator _eventAggregator { get; set; }
@@ -44,28 +46,61 @@ namespace PrideTek.EmployeeModule
         }
 
         private NavigationItem _navItem;
-   
+
         public EmployeeAddViewModel(INavigationManager navManager, IGenericClientService clientService, IEventAggregator eventAggregator)
         {
             _clientService = clientService;
             _navManager = navManager;
             _eventAggregator = eventAggregator;
             _navItem = new NavigationItem();
-            SaveCommand = new DelegateCommand<string>(SaveMethod);
+            SaveCommand = new DelegateCommand(SaveEntity, ModelIsChanged);
             CancelCommand = new DelegateCommand<string>(CancelMethod);
-
+            ResetCommand = new DelegateCommand(ResetEntity, ModelIsChanged);
         }
-            
+
         private void CancelMethod(string navPath)
         {
-            NavTo(navPath);
+            if (SelectedItem.IsChanged)
+            {
+                var messageBox = new MessageDialogService();
+                var result = messageBox.ShowYesNoDialog("Close Tab?", "You will lose your changes if you close this tab.  Close it?", MessageDialogResult.No);
+
+                if(result == MessageDialogResult.No)
+                {
+                    return;//if user click no, remind in that view.  
+                }
+            }
+      
+            NavTo(navPath);//Will navigate to a different view if the user click yes for the Yes or no MessageBox.
         }
 
-        private void SaveMethod(string navPath)
+        public EmployeeWrapper SelectedItem
+        {
+            get
+            {
+                return _selectedItem;
+            }
+            private set
+            {
+                SetField(ref _selectedItem, value);
+            }
+
+        }
+        public void ResetEntity()
+        {
+            SelectedItem.RejectChanges();
+        }
+        private bool ModelIsChanged()
+        {
+            return SelectedItem.IsChanged;
+        }
+
+        private void SaveEntity()
         {
             string statusMsg = "";
 
             _clientService.Update<Employee>(SelectedItem.Model);
+            
             if (_isNewEmployee)
             {
                 statusMsg = String.Format("{0} {1} was added as a new employee", SelectedItem.FirstName, SelectedItem.LastName);
@@ -74,7 +109,8 @@ namespace PrideTek.EmployeeModule
                 statusMsg = String.Format("Updated Employee {0} {1} info", SelectedItem.FirstName, SelectedItem.LastName);
 
             _eventAggregator.GetEvent<StatusBarEvent>().Publish(statusMsg + DateTime.Now);
-            NavTo(navPath);
+            // NavTo(navPath);
+            SelectedItem.AcceptChanges();
         }
 
         private void NavTo(string navPath)
@@ -118,6 +154,14 @@ namespace PrideTek.EmployeeModule
         private void CloneEmployee(EmployeeWrapper employee)
         {
             SelectedItem = new EmployeeWrapper(_clientService.GetById<Employee>((long)employee.EmployeeId));//get the employee and wrapper it.
+            SelectedItem.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == nameof(SelectedItem.IsChanged))
+                {
+                    SaveCommand.RaiseCanExecuteChanged();
+                    ResetCommand.RaiseCanExecuteChanged();
+                }
+            };
         }
     }
 

@@ -13,7 +13,6 @@ namespace PrideTek.EzSale.Models.Entities
 
         }
 
-
         public bool? IsDeleted
         {
             get { return GetValue<bool>(); }

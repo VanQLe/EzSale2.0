@@ -53,15 +53,15 @@ namespace PrideTek.EzSale.ModelsTests.Entities
         {
             var wrapper = new EmployeeWrapper(_employee);
             Assert.IsFalse(wrapper.FirstNameIsChanged);
-            //Assert.IsFalse(wrapper.IsChanged);
+            Assert.IsFalse(wrapper.IsChanged);
 
             wrapper.FirstName = "Thien";
             Assert.IsTrue(wrapper.FirstNameIsChanged);
-           // Assert.IsTrue(wrapper.IsChanged);
+             Assert.IsTrue(wrapper.IsChanged);
 
             wrapper.FirstName = "Van";
             Assert.IsFalse(wrapper.FirstNameIsChanged);
-           // Assert.IsFalse(wrapper.IsChanged);
+            Assert.IsFalse(wrapper.IsChanged);
         }
 
         [TestMethod]
@@ -80,57 +80,57 @@ namespace PrideTek.EzSale.ModelsTests.Entities
             Assert.IsTrue(fired);
         }
 
-        //[TestMethod]
-        //public void ShouldRaisePropertyChangedEventForIsChanged()
-        //{
-        //    var fired = false;
-        //    var wrapper = new EmployeeWrapper(_employee);
-        //    wrapper.PropertyChanged += (s, e) =>
-        //    {
-        //        if (e.PropertyName == nameof(wrapper.IsChanged))
-        //        {
-        //            fired = true;
-        //        }
-        //    };
-        //    wrapper.FirstName = "Julia";
-        //    Assert.IsTrue(fired);
-        //}
+        [TestMethod]
+        public void ShouldRaisePropertyChangedEventForIsChanged()
+        {
+            var fired = false;
+            var wrapper = new EmployeeWrapper(_employee);
+            wrapper.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == nameof(wrapper.IsChanged))
+                {
+                    fired = true;
+                }
+            };
+            wrapper.FirstName = "Thien";
+            Assert.IsTrue(fired);
+        }
 
-        //[TestMethod]
-        //public void ShouldAcceptChanges()
-        //{
-        //    var wrapper = new EmployeeWrapper(_employee);
-        //    wrapper.FirstName = "Julia";
-        //    Assert.AreEqual("Julia", wrapper.FirstName);
-        //    Assert.AreEqual("Thomas", wrapper.FirstNameOriginalValue);
-        //    Assert.IsTrue(wrapper.FirstNameIsChanged);
-        //    Assert.IsTrue(wrapper.IsChanged);
+        [TestMethod]
+        public void ShouldAcceptChanges()
+        {
+            var wrapper = new EmployeeWrapper(_employee);
+            wrapper.FirstName = "Thien";
+            Assert.AreEqual("Thien", wrapper.FirstName);
+            Assert.AreEqual("Van", wrapper.FirstNameOriginalValue);
+            Assert.IsTrue(wrapper.FirstNameIsChanged);
+            Assert.IsTrue(wrapper.IsChanged);
 
-        //    wrapper.AcceptChanges();
+            wrapper.AcceptChanges();
 
-        //    Assert.AreEqual("Julia", wrapper.FirstName);
-        //    Assert.AreEqual("Julia", wrapper.FirstNameOriginalValue);
-        //    Assert.IsFalse(wrapper.FirstNameIsChanged);
-        //    Assert.IsFalse(wrapper.IsChanged);
-        //}
+            Assert.AreEqual("Thien", wrapper.FirstName);
+            Assert.AreEqual("Thien", wrapper.FirstNameOriginalValue);//Once accept everything is wiped out, so FirstNameOriginalValue points to FirstName current value.
+            Assert.IsFalse(wrapper.FirstNameIsChanged);//Once changes has been accepted, reset the IsChanges for all property.
+            Assert.IsFalse(wrapper.IsChanged);//Reset the model IsChange to false, but once AcceptChanges() run, all model property has been updated.
+        }
 
-        //[TestMethod]
-        //public void ShouldRejectChanges()
-        //{
-        //    var wrapper = new EmployeeWrapper(_employee);
-        //    wrapper.FirstName = "Julia";
-        //    Assert.AreEqual("Julia", wrapper.FirstName);
-        //    Assert.AreEqual("Thomas", wrapper.FirstNameOriginalValue);
-        //    Assert.IsTrue(wrapper.FirstNameIsChanged);
-        //    Assert.IsTrue(wrapper.IsChanged);
+        [TestMethod]
+        public void ShouldRejectChanges()
+        {
+            var wrapper = new EmployeeWrapper(_employee);
+            wrapper.FirstName = "Thien";
+            Assert.AreEqual("Thien", wrapper.FirstName);
+            Assert.AreEqual("Van", wrapper.FirstNameOriginalValue);
+            Assert.IsTrue(wrapper.FirstNameIsChanged);
+            Assert.IsTrue(wrapper.IsChanged);
 
-        //    wrapper.RejectChanges();
+            wrapper.RejectChanges();
 
-        //    Assert.AreEqual("Thomas", wrapper.FirstName);
-        //    Assert.AreEqual("Thomas", wrapper.FirstNameOriginalValue);
-        //    Assert.IsFalse(wrapper.FirstNameIsChanged);
-        //    Assert.IsFalse(wrapper.IsChanged);
-        //}
+            Assert.AreEqual("Van", wrapper.FirstName);
+            Assert.AreEqual("Van", wrapper.FirstNameOriginalValue);
+            Assert.IsFalse(wrapper.FirstNameIsChanged);
+            Assert.IsFalse(wrapper.IsChanged);
+        }
     }
 }
 

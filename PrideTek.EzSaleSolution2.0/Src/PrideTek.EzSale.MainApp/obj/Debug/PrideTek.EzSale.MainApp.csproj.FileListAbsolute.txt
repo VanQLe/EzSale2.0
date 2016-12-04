@@ -48,3 +48,4 @@ C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.M
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\PrideTek.EzSale.DAL.pdb
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\PrideTek.EzSale.StatusBarModule.dll
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\PrideTek.EzSale.StatusBarModule.pdb
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\obj\Debug\App.baml

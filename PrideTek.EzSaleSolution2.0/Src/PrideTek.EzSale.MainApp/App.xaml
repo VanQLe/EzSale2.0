@@ -2,9 +2,17 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:converters="clr-namespace:PrideTek.Shell.Core;assembly=PrideTek.Shell.Core"
-             xmlns:local="clr-namespace:PrideTek.EzSale.MainApp">
-
+             xmlns:local="clr-namespace:PrideTek.EzSale.MainApp"
+             xmlns:styles="clr-namespace:PrideTek.Shell.Common.ViewModels;assembly=PrideTek.Shell.Common">
     <Application.Resources>
-        <converters:DebugDataBindingConverter x:Key="DebugDataBindingConverter" />
+        <ResourceDictionary>
+            <!--<converters:DebugDataBindingConverter x:Key="DebugDataBindingConverter" />-->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/PrideTek.EzSale.Infrastructure;Component/Styles/Brushes.xaml"/>
+                <ResourceDictionary Source="/PrideTek.EzSale.Infrastructure;Component/Styles/ControlBaseStyle.xaml"/>
+                <ResourceDictionary Source="/PrideTek.EzSale.Infrastructure;Component/Styles/TextBox.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
     </Application.Resources>
 </Application>

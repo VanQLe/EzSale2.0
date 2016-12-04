@@ -28,3 +28,9 @@ C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.I
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Infrastructure\obj\Debug\PrideTek.EzSale.Infrastructure.g.resources
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Infrastructure\bin\Debug\PrideTek.EzSale.Models.dll
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Infrastructure\bin\Debug\PrideTek.EzSale.Models.pdb
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Infrastructure\obj\Debug\PrideTek.EzSale.Infrastructure_MarkupCompile.cache
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Infrastructure\obj\Debug\PrideTek.EzSale.Infrastructure_MarkupCompile.lref
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Infrastructure\obj\Debug\Styles\Brushes.baml
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Infrastructure\obj\Debug\Styles\TextBox.baml
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Infrastructure\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Infrastructure\obj\Debug\Styles\ControlBaseStyle.baml

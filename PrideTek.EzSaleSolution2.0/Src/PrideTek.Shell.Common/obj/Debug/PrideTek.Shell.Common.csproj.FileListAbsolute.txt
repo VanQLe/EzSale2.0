@@ -5,3 +5,10 @@ C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Shell.Co
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Shell.Common\obj\Debug\PrideTek.Shell.Common.csproj.GenerateResource.Cache
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Shell.Common\obj\Debug\PrideTek.Shell.Common.dll
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Shell.Common\obj\Debug\PrideTek.Shell.Common.pdb
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Shell.Common\obj\Debug\Views\Services\MessageDialog\MessageDialog.g.cs
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Shell.Common\obj\Debug\PrideTek.Shell.Common_MarkupCompile.cache
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Shell.Common\obj\Debug\PrideTek.Shell.Common_MarkupCompile.lref
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Shell.Common\obj\Debug\Views\Services\MessageDialog\MessageDialog.baml
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Shell.Common\obj\Debug\PrideTek.Shell.Common.g.resources
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Shell.Common\obj\Debug\Styles\BrushesStyle.baml
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Shell.Common\obj\Debug\Styles\TextBoxStyle.baml

@@ -1,6 +1,7 @@
 ﻿using PrideTek.Shell.Common.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PrideTek.EzSale.Models.Entities
 {
-    public class ModelWrapper<T> : NotificationObject
+    public class ModelWrapper<T> : NotificationObject, IRevertibleChangeTracking
     {
 
         private Dictionary<string, object> _originalValues;//this dictionary will hold all the orignal values for all the properties for the model.
@@ -27,6 +28,11 @@ namespace PrideTek.EzSale.Models.Entities
             _originalValues = new Dictionary<string, object>(); //initialize the _originalvalue dictionary
         }
 
+        /// <summary>
+        /// Return true if the model has changes by looking at the _originalValue dictionary.  If there are any values in the dictionary, that mean the Model has been changed.
+        /// </summary>
+       
+    
         protected bool GetIsChanged(string propertyName)
         {
             return _originalValues.ContainsKey(propertyName);//if the _originalValue dictionary contain the propertyName (key), that mean the value has been changed, since there is an originalValue within the _originalValue dictionary
@@ -72,8 +78,8 @@ namespace PrideTek.EzSale.Models.Entities
             {
                 UpdateOriginalValue(currentValue,newValue, propertyName);//update the orignal value since a new value will be set
                 propertyInfo.SetValue(Model, newValue);
-                NotifyPropertyChanged(propertyName);//Noitfy that the property has been changed
-                NotifyPropertyChanged(propertyName + "IsChanged");//notify that the IsChanged for that property has been changed.
+                NotifyPropertyChanged(propertyName);//Fire notify changed property.
+                NotifyPropertyChanged((propertyName) + "IsChanged");//Fire Notify changed for PropertyIsChanged changed
             }
         }
 
@@ -83,6 +89,7 @@ namespace PrideTek.EzSale.Models.Entities
             {
                 //if the _originalValue dictionary does not contain the property, add it to the dictionary.
                 _originalValues.Add(propertyName, currentValue);
+                NotifyPropertyChanged("IsChanged");
             }
             else
             {
@@ -90,9 +97,39 @@ namespace PrideTek.EzSale.Models.Entities
                 if(Equals(_originalValues[propertyName], newValue))
                 {
                     _originalValues.Remove(propertyName);
+                    NotifyPropertyChanged("IsChanged");
                 }
- 
+               
             }
+            //NotifyPropertyChanged("IsChanged");//Notify that the ModelIsChange has been changed.
         }
+
+        //Once changes is accepted, this method will set the model to a new state.
+        public void AcceptChanges()
+        {
+            _originalValues.Clear();//
+            NotifyPropertyChanged("");//this will notify all properties to be fired.  This will refresh all the UI.
+            NotifyPropertyChanged("IsChanged");
+        }
+        //This method will reset the model to the original state.
+        public void RejectChanges()
+        {
+            //Property that was changed the original value will be stored in the _originalValues dictionary.  Use the _originalValue dictionary to set back the original value if model reject changes.
+            foreach (var originalValueEntry in _originalValues)
+            {
+                var property = typeof(T).GetProperty(originalValueEntry.Key);//Get the property.
+                property.SetValue(Model, originalValueEntry.Value);//Set value for the property for the model.
+            }
+            _originalValues.Clear();//clear the dictionary once all the value has set back to it's original value.
+            NotifyPropertyChanged("");
+            NotifyPropertyChanged("IsChanged");
+        }
+
+        /// <summary>
+        /// Determine if this Model has been changed.  Return true if model has changed.
+        /// </summary>
+        public bool IsChanged => _originalValues.Count > 0;
+   
+
     }
 }

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-1-98425716
+3727552780
 
-8-665139511
-131569487696
-UserControl1.xaml;
+18-1245227681
+14-534746103
+Styles\BrushesStyle.xaml;Styles\TextBoxStyle.xaml;Views\Services\MessageDialog\MessageDialog.xaml;
 
-True
+False
 
