@@ -47,6 +47,7 @@ namespace PrideTek.EzSale.MainApp
             Container.RegisterType<INavigationManager, NavigationManager>(new ContainerControlledLifetimeManager());
             Container.RegisterType<IGenericClientService, GenericClientService>();
             Container.RegisterType<IGenericRepository, GenericRepository>();
+            Container.RegisterType<IMainWindowViewModel, MainWindowViewModel>();
         }
         protected override RegionAdapterMappings ConfigureRegionAdapterMappings()
         {

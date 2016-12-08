@@ -95,22 +95,57 @@ namespace PrideTek.EmployeeModule
             return SelectedItem.IsChanged;
         }
 
-        private void SaveEntity()
+        private async void SaveEntity()
         {
             string statusMsg = "";
 
-            _clientService.Update<Employee>(SelectedItem.Model);
-            
-            if (_isNewEmployee)
+            // _clientService.Update<Employee>(SelectedItem.Model);
+            try
             {
-                statusMsg = String.Format("{0} {1} was added as a new employee", SelectedItem.FirstName, SelectedItem.LastName);
-            }
-            else
-                statusMsg = String.Format("Updated Employee {0} {1} info", SelectedItem.FirstName, SelectedItem.LastName);
+                await SaveAsync();
+                if (_isNewEmployee)
+                {
+                    statusMsg = String.Format("{0} {1} was added as a new employee", SelectedItem.FirstName, SelectedItem.LastName);
+                }
+                else
+                    statusMsg = String.Format("Updated Employee {0} {1} info", SelectedItem.FirstName, SelectedItem.LastName);
 
-            _eventAggregator.GetEvent<StatusBarEvent>().Publish(statusMsg + DateTime.Now);
-            // NavTo(navPath);
-            SelectedItem.AcceptChanges();
+                _eventAggregator.GetEvent<StatusBarEvent>().Publish(statusMsg + DateTime.Now);
+                // NavTo(navPath);
+                SelectedItem.AcceptChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fail to update Employee");
+                SelectedItem.RejectChanges();
+            }
+            
+          
+
+            //if (_isNewEmployee)
+            //{
+            //    statusMsg = String.Format("{0} {1} was added as a new employee", SelectedItem.FirstName, SelectedItem.LastName);
+            //}
+            //else
+            //    statusMsg = String.Format("Updated Employee {0} {1} info", SelectedItem.FirstName, SelectedItem.LastName);
+
+            //_eventAggregator.GetEvent<StatusBarEvent>().Publish(statusMsg + DateTime.Now);
+            //// NavTo(navPath);
+            //SelectedItem.AcceptChanges();
+        }
+
+        private async Task SaveAsync()
+        {
+            try
+            {
+                throw new ArgumentNullException();
+                await Task.Run(()=> _clientService.Update<Employee>(SelectedItem.Model));
+            }
+            catch
+            {
+                
+            }
+            
         }
 
         private void NavTo(string navPath)
@@ -125,18 +160,16 @@ namespace PrideTek.EmployeeModule
         {
             if (navigationContext.NavigationService.Region.Context != null && navigationContext.NavigationService.Region.Context is EmployeeWrapper)
             {
-                CloneEmployee((EmployeeWrapper)navigationContext.NavigationService.Region.Context);
+                SetSelectedItem((EmployeeWrapper)navigationContext.NavigationService.Region.Context);
                 ViewTitle = "Edit Employee View";
                 navigationContext.NavigationService.Region.Context = null;
                 _isNewEmployee = false;
             }
             else
             {
-                SelectedItem = new EmployeeWrapper(new Employee());
+                SetSelectedItem(new EmployeeWrapper(new Employee()));
                 ViewTitle = "Add new employee";
                 TabTitle = "Info";
-                SelectedItem.FirstName = null;
-                SelectedItem.LastName = null;
                 _isNewEmployee = true;
             }
         }
@@ -151,15 +184,16 @@ namespace PrideTek.EmployeeModule
          
         }
 
-        private void CloneEmployee(EmployeeWrapper employee)
+        private void SetSelectedItem(EmployeeWrapper employeeWrapper)
         {
-            SelectedItem = new EmployeeWrapper(_clientService.GetById<Employee>((long)employee.EmployeeId));//get the employee and wrapper it.
+            SelectedItem = employeeWrapper;             //new EmployeeWrapper(_clientService.GetById<Employee>((long)employee.EmployeeId));//get the employee and wrapper it.
             SelectedItem.PropertyChanged += (s, e) =>
             {
                 if (e.PropertyName == nameof(SelectedItem.IsChanged))
                 {
                     SaveCommand.RaiseCanExecuteChanged();
                     ResetCommand.RaiseCanExecuteChanged();
+                    _eventAggregator.GetEvent<ModelIsChangedEvent>().Publish(SelectedItem.IsChanged);//Notify the mainwindow that there are changes, to prompt user not to close window.
                 }
             };
         }

@@ -22,7 +22,6 @@ namespace PrideTek.EzSale.ModelsTests.Entities
                 Email = "Van.Le@PrideTek.com",
                 // DateOfBirth = new DateTime(04,04,1986)
             };
-
         }
 
         [TestMethod]

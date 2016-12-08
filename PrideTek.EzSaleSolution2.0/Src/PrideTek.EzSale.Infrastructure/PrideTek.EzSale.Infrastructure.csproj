@@ -84,6 +84,7 @@
     <Compile Include="ApplicationCommands.cs" />
     <Compile Include="Behaviors\ChangeBehavior.cs" />
     <Compile Include="ComboBoxData.cs" />
+    <Compile Include="Converters\DatePickerOriginalValueConverter.cs" />
     <Compile Include="Events\Events.cs" />
     <Compile Include="ModuleBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -145,7 +146,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\ComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\ControlBaseStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\DatePicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

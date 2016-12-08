@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace PrideTek.EzSale.StatusBarModule
@@ -32,9 +33,36 @@ namespace PrideTek.EzSale.StatusBarModule
             eventAggregator.GetEvent<StatusBarEvent>().Subscribe(Update);
         }
 
-        private void Update(string msg)
+        private async void Update(string msg)
         {
-            StatusBarText = msg;
+            
+            try
+            {
+                 await UpdateAsyn(msg);
+                //throw new NullReferenceException();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
+        private async Task UpdateAsyn(string msg)
+        {
+           // throw new NullReferenceException();
+            try
+            {
+
+                await Task.Run(() =>
+                {
+                    StatusBarText = msg;
+                }).ConfigureAwait(false);
+
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
     }
 }

@@ -74,7 +74,7 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <ComboBox Grid.Row="1"  Foreground="Gray"/>
-                            <DatePicker Grid.Row="2" FontSize="10" Foreground="Gray" SelectedDate="{Binding SelectedItem.DoB, UpdateSourceTrigger=PropertyChanged}"/>
+                            <DatePicker Grid.Row="2" FontSize="10" Foreground="Gray" SelectedDate="{Binding SelectedItem.DateOfBirth, UpdateSourceTrigger=PropertyChanged}"/>
                         </Grid>
 
                         <!--Second Row -->
@@ -120,7 +120,7 @@
                                 <RowDefinition Height="2*"/>
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
-                            <ComboBox Grid.Row="1" ItemsSource="{x:Static inf:ComboBoxData.HourlyWages}"/>
+                            <ComboBox Grid.Row="1" ItemsSource="{x:Static inf:ComboBoxData.HourlyWages}" SelectedItem="{Binding SelectedItem.HourlyWage}"/>
                             <TextBox Grid.Row="2" Text="{Binding SelectedItem.CellPhone, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
                         </Grid>
 
@@ -150,7 +150,7 @@
 
                             <TextBox Grid.Row="1" Text="{Binding SelectedItem.Address, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
                             <TextBox Grid.Row="2" Text="{Binding SelectedItem.City, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
-                            <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{x:Static inf:ComboBoxData.Countries}" FontSize="6" />
+                            <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{x:Static inf:ComboBoxData.Countries}" FontSize="6" SelectedItem="{Binding SelectedItem.Country}"/>
                         </Grid>
 
                         <Grid Grid.Row="2" Grid.Column="2">
@@ -177,8 +177,8 @@
                             </Grid.RowDefinitions>
 
                             <TextBox Grid.Row="1" Text="{Binding SelectedItem.Address2, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
-                            <TextBox Grid.Row="2" Text="{Binding SelectedItem.Zip, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
-                            <ComboBox Grid.Row="3" ItemsSource="{x:Static inf:ComboBoxData.States}"  FontSize="10" />
+                            <TextBox Grid.Row="2" Text="{Binding SelectedItem.ZipCode, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
+                            <ComboBox Grid.Row="3" ItemsSource="{x:Static inf:ComboBoxData.States}"  FontSize="10" SelectedItem="{Binding SelectedItem.State}"/>
                         </Grid>
                         <!--Fourth Row -->
                         <Grid Grid.Row="3" Grid.Column="0">
@@ -238,11 +238,10 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
 
-                            <PasswordBox Grid.Row="1" Foreground="Gray"/>
-                            <ComboBox  Name="AccessPermission" Grid.Row="2" Grid.Column="1" ItemsSource="{x:Static inf:ComboBoxData.AccessPermission}" Text="{Binding SelectedItem.AccessPermission,UpdateSourceTrigger=PropertyChanged}"/>
+                            <PasswordBox Grid.Row="1" Foreground="Gray" />
+                            <ComboBox  Name="AccessPermission" Grid.Row="2" Grid.Column="1" ItemsSource="{x:Static inf:ComboBoxData.AccessPermission}" SelectedItem="{Binding SelectedItem.AccessPermission,UpdateSourceTrigger=PropertyChanged}"/>
                             <ComboBox Grid.Row="3" Grid.Column="1"  />
                         </Grid>
-
                     </Grid>
                 </TabItem>
             </TabControl>

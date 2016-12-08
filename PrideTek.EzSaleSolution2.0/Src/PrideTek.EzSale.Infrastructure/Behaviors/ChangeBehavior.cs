@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 
 namespace PrideTek.EzSale.Infrastructure.Behaviors
@@ -18,7 +19,7 @@ namespace PrideTek.EzSale.Infrastructure.Behaviors
         public static readonly DependencyProperty IsChangedProperty;
         public static readonly DependencyProperty PropertyNameProperty;
         public static readonly DependencyProperty IsActiveProperty;
-
+        public static readonly DependencyProperty OriginalValueDateConverterProperty;
 
         static ChangeBehavior()
         {
@@ -26,15 +27,27 @@ namespace PrideTek.EzSale.Infrastructure.Behaviors
             OriginalValueProperty = DependencyProperty.RegisterAttached("OriginalValue", typeof(object), typeof(ChangeBehavior), new PropertyMetadata(null));
             IsChangedProperty = DependencyProperty.RegisterAttached("IsChanged", typeof(bool), typeof(ChangeBehavior), new PropertyMetadata(null));
             PropertyNameProperty = DependencyProperty.RegisterAttached("PropertyName", typeof(string), typeof(ChangeBehavior), new PropertyMetadata(null));
+            // Using a DependencyProperty as the backing store for OriginalValueDateConverter.  This enables animation, styling, binding, etc...
+            OriginalValueDateConverterProperty = DependencyProperty.RegisterAttached("OriginalValueDateConverter", typeof(IValueConverter), typeof(ChangeBehavior), new PropertyMetadata(null, OnOriginalValueConverterPropertyChanged));
+
+
+
             _defaultProperties = new Dictionary<Type, DependencyProperty>
             {
                 //{typeof(TextBox), TextBox.TextProperty }
                 //or you can write the above code for more readibilty
-                [typeof(TextBox)] = TextBox.TextProperty //So TextBox type(Key), and Textbox.TextProperty(Value).  Is one entry for this dictionary
+                [typeof(TextBox)] = TextBox.TextProperty, //So TextBox type(Key), and Textbox.TextProperty(Value).  Is one entry for this dictionary
+
+                [typeof(CheckBox)] = ToggleButton.IsCheckedProperty,
+                [typeof(DatePicker)] = DatePicker.SelectedDateProperty,
+                [typeof(ComboBox)] = Selector.SelectedItemProperty
+
             };
         }
 
-        
+      
+
+
         #region Attach Property OriginalValue
         public static object GetOriginalValue(DependencyObject obj)
         {
@@ -108,29 +121,60 @@ namespace PrideTek.EzSale.Infrastructure.Behaviors
             if (_defaultProperties.ContainsKey(d.GetType()))
             {
                 var defaultProperty = _defaultProperties[d.GetType()];
-                if((bool)e.NewValue)//check if IsActive is true
+                if ((bool)e.NewValue)//check if IsActive is true
                 {
                     var dpBinding = BindingOperations.GetBinding(d, defaultProperty);//This holds the binding for the depenedency property
 
-                    if(dpBinding !=null)//check if there is a binding
+                    if (dpBinding != null)//check if there is a binding
                     {
                         string bindingPath = dpBinding.Path.Path;//return the string of the binding name
-
                         //Now we need to set the binding for dp OriginalValue and IsChanged
                         BindingOperations.SetBinding(d, IsChangedProperty, new Binding(bindingPath + "IsChanged"));
-                        BindingOperations.SetBinding(d, OriginalValueProperty, new Binding(bindingPath + "OriginalValue"));
+                        CreateOriginalValueBinding(d, bindingPath + "OriginalValue");
+
                     }
                     else
                     {
-                        BindingOperations.ClearBinding(d,IsChangedProperty);
+                        BindingOperations.ClearBinding(d, IsChangedProperty);
                         BindingOperations.ClearBinding(d, OriginalValueProperty);
                     }
                 }
             }
         }
-
-
         #endregion
 
+        #region DatePicker Converter Attached Property
+
+
+        public static IValueConverter GetOriginalValueDateConverter(DependencyObject obj)
+        {
+            return (IValueConverter)obj.GetValue(OriginalValueDateConverterProperty);
+        }
+
+        public static void SetOriginalValueDateConverter(DependencyObject obj, IValueConverter value)
+        {
+            obj.SetValue(OriginalValueDateConverterProperty, value);
+        }
+
+        private static void OnOriginalValueConverterPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var originalValueBinding
+       = BindingOperations.GetBinding(d, OriginalValueProperty) as Binding;
+            if (originalValueBinding != null)
+            {
+                CreateOriginalValueBinding(d, originalValueBinding.Path.Path);
+            }
+        }
+        #endregion
+
+        private static void CreateOriginalValueBinding(DependencyObject d, string originalValueBindingPath)
+        {
+            var newBinding = new Binding(originalValueBindingPath)
+            {
+                Converter = GetOriginalValueDateConverter(d),
+                ConverterParameter = d
+            };
+            BindingOperations.SetBinding(d, OriginalValueProperty, newBinding);
+        }
     }
 }

@@ -191,9 +191,14 @@ namespace PrideTek.EzSale.Models.Entities
         public bool AccessPermissionIsChanged => GetIsChanged(nameof(AccessPermission));
 
 
+        public long? EmployeeCode
+        {
+            get { return GetValue<long?>(); }
+            set { SetValue(value); }
+        }
 
-
-
+        public long? EmployeeCodeOriginalValue => GetOriginalValue<long?>(nameof(EmployeeCode));
+        public bool EmployeeCodeIsChanged => GetIsChanged(nameof(EmployeeCode));
 
 
 

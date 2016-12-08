@@ -229,6 +229,7 @@ namespace PrideTek.EmployeeModule
             {
                 navigationContext.NavigationService.Region.Context = SelectedEmployee;
             }
+          
         }
       
         #endregion

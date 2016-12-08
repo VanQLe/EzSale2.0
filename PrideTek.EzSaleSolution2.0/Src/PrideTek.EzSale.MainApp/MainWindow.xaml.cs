@@ -1,4 +1,5 @@
 ﻿using Microsoft.Practices.Unity;
+using PrideTek.Shell.Common.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace PrideTek.EzSale.MainApp
 {
@@ -20,9 +22,20 @@ namespace PrideTek.EzSale.MainApp
     /// </summary>
     public partial class MainWindow : Window
     {
-                public MainWindow()
+        private IMainWindowViewModel _viewModel;
+        public MainWindow(IMainWindowViewModel viewModel)
         {
             InitializeComponent();
+            _viewModel = viewModel;
+            DataContext = _viewModel;
         }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            _viewModel.OnClosing(e);
+        }
+
+   
     }
 }

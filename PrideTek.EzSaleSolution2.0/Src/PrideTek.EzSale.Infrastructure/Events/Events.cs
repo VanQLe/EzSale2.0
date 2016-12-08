@@ -7,8 +7,12 @@ using System.Threading.Tasks;
 
 namespace PrideTek.EzSale.Infrastructure.Events
 {
-        public class StatusBarEvent : PubSubEvent<string>
-        {
-        }
-    
+    public class StatusBarEvent : PubSubEvent<string>
+    {
+    }
+
+    public class ModelIsChangedEvent : PubSubEvent<bool>
+    {
+    }
+
 }

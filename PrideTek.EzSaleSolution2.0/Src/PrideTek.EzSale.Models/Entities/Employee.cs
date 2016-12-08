@@ -31,7 +31,7 @@ namespace PrideTek.EzSale.Models.Entities
         private string _password;
         private decimal? _hourlyWage;
         private int? _pinCode;
-
+        private long? _employeeCode;
         //Database property
         private bool? _isDeleted = false;
 
@@ -298,6 +298,19 @@ namespace PrideTek.EzSale.Models.Entities
             set
             {
                 _accessPermission = value;
+            }
+        }
+
+        public long? EmployeeCode
+        {
+            get
+            {
+                return _employeeCode;
+            }
+
+            set
+            {
+                _employeeCode = value;
             }
         }
 

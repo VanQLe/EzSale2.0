@@ -3,14 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:converters="clr-namespace:PrideTek.Shell.Core;assembly=PrideTek.Shell.Core"
              xmlns:local="clr-namespace:PrideTek.EzSale.MainApp"
-             xmlns:styles="clr-namespace:PrideTek.Shell.Common.ViewModels;assembly=PrideTek.Shell.Common">
+             xmlns:styles="clr-namespace:PrideTek.Shell.Common.ViewModels;assembly=PrideTek.Shell.Common"
+             xmlns:APConverters="clr-namespace:PrideTek.EzSale.Infrastructure.Converters;assembly=PrideTek.EzSale.Infrastructure">
+   
     <Application.Resources>
         <ResourceDictionary>
             <!--<converters:DebugDataBindingConverter x:Key="DebugDataBindingConverter" />-->
+            <APConverters:DatePickerOriginalValueConverter x:Key="DatePickerOriginalValueConverter"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/PrideTek.EzSale.Infrastructure;Component/Styles/Brushes.xaml"/>
                 <ResourceDictionary Source="/PrideTek.EzSale.Infrastructure;Component/Styles/ControlBaseStyle.xaml"/>
                 <ResourceDictionary Source="/PrideTek.EzSale.Infrastructure;Component/Styles/TextBox.xaml"/>
+                <ResourceDictionary Source="/PrideTek.EzSale.Infrastructure;Component/Styles/DatePicker.xaml"/>
+                <ResourceDictionary Source="/PrideTek.EzSale.Infrastructure;Component/Styles/ComboBox.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
