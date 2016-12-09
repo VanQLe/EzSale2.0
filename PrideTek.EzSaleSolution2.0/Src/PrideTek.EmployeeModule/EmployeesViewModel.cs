@@ -1,8 +1,10 @@
 ﻿using PrideTek.EmployeeModule.Interfaces;
 using PrideTek.EzSale.ClientService;
 using PrideTek.EzSale.Infrastructure;
+using PrideTek.EzSale.Infrastructure.Events;
 using PrideTek.EzSale.Models.Entities;
 using PrideTek.Shell.Common.ViewModels;
+using PrideTek.Shell.Common.Views.Services.MessageDialog;
 using PrideTek.Shell.Core.Navigation;
 using Prism.Commands;
 using Prism.Events;
@@ -11,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
@@ -22,6 +25,7 @@ namespace PrideTek.EmployeeModule
         public string ViewHeader { get; set; }
         private INavigationManager _navManager { get; set; }
         private NavigationItem _navItem { get; set; }
+        private IEventAggregator _eventAggregator { get; set; }
 
         public DelegateCommand<string> NavCommand { get; set; }
         public DelegateCommand DeleteCommand { get; set; }
@@ -41,13 +45,50 @@ namespace PrideTek.EmployeeModule
             DeleteCommand = new DelegateCommand(DeleteSelectedItems);
             SortByPropertyValue = ComboBoxData.SortByPropertyValues[0];
             SortByState = ComboBoxData.SortByEntityState[0];
-            GetList();
             SelectedItemChangedCommand = new DelegateCommand<EmployeeWrapper>(SelectedItemChangedEvent);
+            _eventAggregator = eventAggregator;
+            ListAsync();
         }
 
-        private void DeleteSelectedItems()
+        private async void DeleteSelectedItems()
         {
-            if(MessageBox.Show("Are you sure to delete selected item(s)?","Warning!", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.Yes) == MessageBoxResult.Yes)
+            var messageBox = new MessageDialogService();
+            var msgResult = messageBox.ShowYesNoDialog("Warning!", "Are you sure you to delete selected item(s)?", MessageDialogResult.No);
+
+            //if (MessageBox.Show("Are you sure you to delete selected item(s)?","Warning!", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.Yes) == MessageBoxResult.Yes)
+            if(msgResult == MessageDialogResult.Yes)
+            {
+                try
+                {
+                    await DeleteEmployeesAsync();
+                    await ListAsync();
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("Internal Error while deleing employees");
+                }
+                //await DeleteEmployeesAsync();
+                //foreach (var employeeWrapper in EmployeeItems.ToList())
+                //{
+                //    if (employeeWrapper.IsSelected)
+                //    {
+                //        if (employeeWrapper != null)
+                //        {
+                //            string Name = employeeWrapper.FirstName + " " + employeeWrapper.LastName;
+                //            employeeWrapper.IsDeleted = true;
+                //            _clientService.Delete<Employee>(employeeWrapper.Model/*.Employee*/);
+                //            EmployeeItems.Remove(employeeWrapper);
+                //            MessageBox.Show(Name + " was deleted");
+                //        }
+                //    }
+                //}
+            }
+            //ListAsync();
+        }
+
+        private async Task DeleteEmployeesAsync()
+        {
+            await Task.Run(() => 
             {
                 foreach (var employeeWrapper in EmployeeItems.ToList())
                 {
@@ -55,16 +96,17 @@ namespace PrideTek.EmployeeModule
                     {
                         if (employeeWrapper != null)
                         {
-                            string Name = employeeWrapper./*.Employee.*/FirstName + " " + employeeWrapper./*.Employee.*/LastName;
-                            employeeWrapper./*Employee.*/IsDeleted = true;
-                            _clientService.Delete<Employee>(employeeWrapper.Model/*.Employee*/);
+                            string Name = employeeWrapper.FirstName + " " + employeeWrapper.LastName;
+                            employeeWrapper.IsDeleted = true;
+                            _clientService.Delete<Employee>(employeeWrapper.Model);
                             EmployeeItems.Remove(employeeWrapper);
-                            MessageBox.Show(Name + " was deleted");
+                            _eventAggregator.GetEvent<StatusBarEvent>().Publish(Name + "was deleted");
+                            Thread.Sleep(1000);
+                            //MessageBox.Show(Name + " was deleted");
                         }
                     }
                 }
-            }
-            GetList();
+            });
         }
 
         #region Display Employee list content
@@ -116,23 +158,60 @@ namespace PrideTek.EmployeeModule
 
         private List<Employee> _employees;
 
-        private void GetList()
+        private  async Task ListAsync()
         {
-            Employees = new List<Employee>();
-            Employees = _clientService.GetList<Employee>();
-            //Employees = Employees.OrderBy(o => o.FirstName).ToList() ;
-
-            if(Employees != null)
+            try
             {
-                SortCollectionAndFilter();//sort the collection before displaying
+                await GetListAsync();//get the list
+                //Employees = employees;//wait for the list
+                if (Employees != null)
+                {
+                    SortCollectionAndFilter();//sort the collection before displaying
+                }
+                EmployeeItems = Employees.Select((item) => new EmployeeWrapper(item)).ToList();
+                EmployeeCollection = new ListCollectionView(EmployeeItems);
             }
-           
-            //foreach (var employee in Employees)
-            //{
+            catch
+            {
+                _eventAggregator.GetEvent<StatusBarEvent>().Publish("Internal error while getting employees list");
+            }
 
+            ////Employees = _clientService.GetList<Employee>();
+
+
+            ////Employees = Employees.OrderBy(o => o.FirstName).ToList() ;
+
+            //if(Employees != null)
+            //{
+            //    SortCollectionAndFilter();//sort the collection before displaying
             //}
-            EmployeeItems = Employees.Select((item) => new EmployeeWrapper(item)).ToList();
-            EmployeeCollection = new ListCollectionView(EmployeeItems);
+           
+            ////foreach (var employee in Employees)
+            ////{
+
+            ////}
+            //EmployeeItems = Employees.Select((item) => new EmployeeWrapper(item)).ToList();
+            //EmployeeCollection = new ListCollectionView(EmployeeItems);
+        }
+
+        private async Task GetListAsync()
+        {
+            try
+            {
+                //Employees = new List<Employee>();
+                _eventAggregator.GetEvent<StatusBarEvent>().Publish("Getting Employees list");
+                var employees = await Task<List<Employee>>.Run(() =>
+                {
+                    //Thread.Sleep(10000);
+                    return _clientService.GetList<Employee>();
+                });
+                
+                Employees = employees;
+            }
+            catch
+            {
+                _eventAggregator.GetEvent<StatusBarEvent>().Publish("Failed to get employees list");
+            }
         }
 
         private void SortCollectionAndFilter()
@@ -203,8 +282,6 @@ namespace PrideTek.EmployeeModule
             }
            
         }
-
-
        
         private void SelectedItemChangedEvent(EmployeeWrapper selectedItem)
         {
@@ -258,7 +335,7 @@ namespace PrideTek.EmployeeModule
             set
             {
                 SetField(ref _sortByPropertyValue, value);
-                GetList();
+                ListAsync();
             }
            
         }
@@ -272,7 +349,7 @@ namespace PrideTek.EmployeeModule
             set
             {
                 SetField(ref _sortByState, value);
-                GetList();
+                ListAsync();
             }
             
         }

@@ -21,6 +21,14 @@ namespace PrideTek.EzSale.Models.Entities
         public bool IsDeletedOriginalValue => GetOriginalValue<bool>(nameof(IsDeleted));
         public bool IsDeletedIsChanged => GetIsChanged(nameof(IsDeleted));
 
+        public bool IsNew
+        {
+            get { return Model.IsNew; }
+            //set { SetValue(value); }
+        }
+        //public bool IsNewOriginalValue => GetOriginalValue<bool>(nameof(IsNew));
+        //public bool IsNewChanged => GetIsChanged(nameof(IsNew));
+
 
         public bool IsSelected
         {

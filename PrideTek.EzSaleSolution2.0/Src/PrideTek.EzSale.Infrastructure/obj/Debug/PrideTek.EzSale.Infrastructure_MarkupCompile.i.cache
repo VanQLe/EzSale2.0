@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-5158034790
+6-599119496
 
-16-1936361142
+181636839385
 781804062168
-Styles\Brushes.xaml;Styles\ComboBox.xaml;Styles\ControlBaseStyle.xaml;Styles\DatePicker.xaml;Styles\TextBox.xaml;
+Styles\Brushes.xaml;Styles\ComboBox.xaml;Styles\ControlBaseStyle.xaml;Styles\DatePicker.xaml;Styles\TextBox.xaml;UI_Helper\BusyIndicator.xaml;
 
 False
 

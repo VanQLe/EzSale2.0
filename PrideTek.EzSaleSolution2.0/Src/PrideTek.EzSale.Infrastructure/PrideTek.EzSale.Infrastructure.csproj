@@ -84,6 +84,7 @@
     <Compile Include="ApplicationCommands.cs" />
     <Compile Include="Behaviors\ChangeBehavior.cs" />
     <Compile Include="ComboBoxData.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\DatePickerOriginalValueConverter.cs" />
     <Compile Include="Events\Events.cs" />
     <Compile Include="ModuleBase.cs" />
@@ -102,6 +103,9 @@
     </Compile>
     <Compile Include="RegionNames.cs" />
     <Compile Include="StackPanelRegionAdapter.cs" />
+    <Compile Include="UI_Helper\BusyIndicator.xaml.cs">
+      <DependentUpon>BusyIndicator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewNames.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -159,6 +163,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\TextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI_Helper\BusyIndicator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

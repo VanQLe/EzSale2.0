@@ -4,9 +4,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PrideTek.EzSale.StatusBarModule"
+             xmlns:controls="clr-namespace:PrideTek.EzSale.Infrastructure.UI_Helper;assembly=PrideTek.EzSale.Infrastructure"
              mc:Ignorable="d" 
+             xmlns:converters="clr-namespace:PrideTek.EzSale.Infrastructure.Converters;assembly=PrideTek.EzSale.Infrastructure"
              d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <converters:BoolToVisibilityConverter
+         x:Key="BoolToHiddenConverter"
+         TrueValue="Visible" FalseValue="Hidden" />
+    </UserControl.Resources>
+
+
     <Grid>
-        <TextBlock Text="{Binding StatusBarText,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="28" />
+      
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="{Binding StatusBarText,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="28" />
+            <!--<controls:BusyIndicator x:Name="BusyIndicator" Margin="60 0 0 0" Height="10" Width="10" Visibility="{Binding BusyIndicatorVisibility, 
+                            Converter={StaticResource BoolToHiddenConverter}, UpdateSourceTrigger=PropertyChanged}" />-->
+        </StackPanel>
+       
     </Grid>
 </UserControl>

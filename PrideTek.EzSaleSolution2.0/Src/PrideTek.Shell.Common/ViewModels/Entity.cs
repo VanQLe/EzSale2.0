@@ -18,7 +18,7 @@ namespace PrideTek.Shell.Common.ViewModels
         public bool IsDirty { get; set; }
 
         [NotMapped]
-        public bool? IsNew
+        public bool IsNew
         {
             get
             {

@@ -1,15 +1,16 @@
 ﻿<Application x:Class="PrideTek.EzSale.MainApp.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:converters="clr-namespace:PrideTek.Shell.Core;assembly=PrideTek.Shell.Core"
+             xmlns:debugConverters="clr-namespace:PrideTek.Shell.Core;assembly=PrideTek.Shell.Core"
              xmlns:local="clr-namespace:PrideTek.EzSale.MainApp"
              xmlns:styles="clr-namespace:PrideTek.Shell.Common.ViewModels;assembly=PrideTek.Shell.Common"
-             xmlns:APConverters="clr-namespace:PrideTek.EzSale.Infrastructure.Converters;assembly=PrideTek.EzSale.Infrastructure">
+             xmlns:converters="clr-namespace:PrideTek.EzSale.Infrastructure.Converters;assembly=PrideTek.EzSale.Infrastructure">
    
     <Application.Resources>
         <ResourceDictionary>
-            <!--<converters:DebugDataBindingConverter x:Key="DebugDataBindingConverter" />-->
-            <APConverters:DatePickerOriginalValueConverter x:Key="DatePickerOriginalValueConverter"/>
+            <!--<debugConverters:DebugDataBindingConverter x:Key="DebugDataBindingConverter" />-->
+            <converters:DatePickerOriginalValueConverter x:Key="DatePickerOriginalValueConverter"/>
+            <!--<converters:BoolToVisibilityConverter x:Key="BoolToHiddenConverter " TrueValue="Visible" FalseValue="Hidden"/>-->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/PrideTek.EzSale.Infrastructure;Component/Styles/Brushes.xaml"/>
                 <ResourceDictionary Source="/PrideTek.EzSale.Infrastructure;Component/Styles/ControlBaseStyle.xaml"/>

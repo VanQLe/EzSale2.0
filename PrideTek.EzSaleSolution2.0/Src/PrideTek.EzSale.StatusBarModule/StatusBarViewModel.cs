@@ -14,6 +14,7 @@ namespace PrideTek.EzSale.StatusBarModule
     public class StatusBarViewModel: BaseViewModel,IStatusBarViewModel
     {
         private string _statusBarText;
+        private string _busyIndicatorVisibility;
 
         public string StatusBarText
         {
@@ -28,9 +29,23 @@ namespace PrideTek.EzSale.StatusBarModule
             }
         }
 
+        public string BusyIndicatorVisibility
+        {
+            get
+            {
+                return _busyIndicatorVisibility;
+            }
+
+            set
+            {
+                SetField(ref _busyIndicatorVisibility, value);
+            }
+        }
+
         public StatusBarViewModel(IEventAggregator eventAggregator)
         {
             eventAggregator.GetEvent<StatusBarEvent>().Subscribe(Update);
+            //BusyIndicatorVisibility = "Visible";
         }
 
         private async void Update(string msg)
@@ -51,11 +66,12 @@ namespace PrideTek.EzSale.StatusBarModule
            // throw new NullReferenceException();
             try
             {
-
                 await Task.Run(() =>
                 {
                     StatusBarText = msg;
-                }).ConfigureAwait(false);
+                    Thread.Sleep(4000);
+                    StatusBarText = "";
+                });
 
             }
             catch (Exception)

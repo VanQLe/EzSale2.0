@@ -97,55 +97,52 @@ namespace PrideTek.EmployeeModule
 
         private async void SaveEntity()
         {
-            string statusMsg = "";
-
-            // _clientService.Update<Employee>(SelectedItem.Model);
+            
             try
             {
-                await SaveAsync();
-                if (_isNewEmployee)
-                {
-                    statusMsg = String.Format("{0} {1} was added as a new employee", SelectedItem.FirstName, SelectedItem.LastName);
-                }
-                else
-                    statusMsg = String.Format("Updated Employee {0} {1} info", SelectedItem.FirstName, SelectedItem.LastName);
-
-                _eventAggregator.GetEvent<StatusBarEvent>().Publish(statusMsg + DateTime.Now);
-                // NavTo(navPath);
-                SelectedItem.AcceptChanges();
+              await SaveAsync();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Fail to update Employee");
-                SelectedItem.RejectChanges();
+                MessageBox.Show("Fail to update Employee: Internal Error");
             }
-            
-          
-
-            //if (_isNewEmployee)
-            //{
-            //    statusMsg = String.Format("{0} {1} was added as a new employee", SelectedItem.FirstName, SelectedItem.LastName);
-            //}
-            //else
-            //    statusMsg = String.Format("Updated Employee {0} {1} info", SelectedItem.FirstName, SelectedItem.LastName);
-
-            //_eventAggregator.GetEvent<StatusBarEvent>().Publish(statusMsg + DateTime.Now);
-            //// NavTo(navPath);
-            //SelectedItem.AcceptChanges();
         }
 
         private async Task SaveAsync()
         {
+            var statusBarMsg = "";
+
             try
             {
-                throw new ArgumentNullException();
-                await Task.Run(()=> _clientService.Update<Employee>(SelectedItem.Model));
+                await Task.Run(() =>
+                {
+                    if ((bool)SelectedItem.IsNew)
+                    {
+                        statusBarMsg = String.Format("{0} {1} was added as a new employee successfully", SelectedItem.FirstName, SelectedItem.LastName);
+                    }
+                    else
+                    {
+                        statusBarMsg = String.Format("Updated Employee {0} {1} information successfully", SelectedItem.FirstName, SelectedItem.LastName);
+                    }
+                    _clientService.Update<Employee>(SelectedItem.Model);
+                    SelectedItem.AcceptChanges();
+                    _eventAggregator.GetEvent<StatusBarEvent>().Publish(statusBarMsg + DateTime.Now);
+                });
             }
             catch
             {
-                
+                if ((bool)SelectedItem.IsNew)
+                {
+                    statusBarMsg = String.Format("Failed to add new employee {0} {1}", SelectedItem.FirstName, SelectedItem.LastName);
+                }
+                else
+                {
+                    statusBarMsg = String.Format("Failed to update {0} {1} info", SelectedItem.FirstName, SelectedItem.LastName);
+                }
+
+                _eventAggregator.GetEvent<StatusBarEvent>().Publish(statusBarMsg + DateTime.Now);
+                SelectedItem.RejectChanges();
             }
-            
         }
 
         private void NavTo(string navPath)
@@ -186,7 +183,7 @@ namespace PrideTek.EmployeeModule
 
         private void SetSelectedItem(EmployeeWrapper employeeWrapper)
         {
-            SelectedItem = employeeWrapper;             //new EmployeeWrapper(_clientService.GetById<Employee>((long)employee.EmployeeId));//get the employee and wrapper it.
+            SelectedItem = employeeWrapper; 
             SelectedItem.PropertyChanged += (s, e) =>
             {
                 if (e.PropertyName == nameof(SelectedItem.IsChanged))
