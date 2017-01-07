@@ -5,44 +5,189 @@
                     xmlns:behaviors="clr-namespace:PrideTek.EzSale.Infrastructure.Behaviors"
                     xmlns:converters="clr-namespace:PrideTek.Shell.Core;assembly=PrideTek.Shell.Core">
 
+   
 
+    <Style x:Key="TBInputStyle" TargetType="TextBox" BasedOn="{StaticResource ControlBaseStyle}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Padding" Value="2,1" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource ControlFamilyFont}" />
+        <Setter Property="FontSize" Value="{DynamicResource ControlFontSize}" />
+        <Setter Property="Foreground" Value="{DynamicResource ControlForeground}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource ControlForeground}" />
+        <!--<Setter Property="CaretBrush" Value="{DynamicResource AccentBrush1_1}" />-->
+        <Setter Property="CaretBrush" Value="Black" />
+        <Setter Property="Height" Value="35" />
+        <Setter Property="Width" Value="350" />
+    </Style>
+    
+    <Style x:Key="InputTBStyle" TargetType="TextBox" BasedOn="{StaticResource TBInputStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{DynamicResource DisabledForeground}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
 
-    <!--<Style TargetType="TextBox">
-        <Setter Property="Background" Value="{StaticResource DefaultBackgroundBrush}"/>
-        <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource DefaultBorderBrush}"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-    </Style>-->
-    <!--<Style>
-        <Style.Triggers>
-            <DataTrigger Binding="{Binding SelectedItem.FirstNameIsChanged}" Value="True">
-                <Setter Property="ToolTip" />
+                    <Grid x:Name="RootElement" >
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0:0:0:3">
+                                        <VisualTransition.GeneratedEasingFunction>
+                                            <CircleEase EasingMode="EaseOut" />
+                                        </VisualTransition.GeneratedEasingFunction>
+                                    </VisualTransition>
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="BorderOver" Storyboard.TargetProperty="Opacity" To="1" Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0"  Storyboard.TargetName="Border" Storyboard.TargetProperty="Opacity" To="{DynamicResource DisabledOpacity}" />
+                                        <DoubleAnimation Duration="0"  Storyboard.TargetName="PART_ContentHost" Storyboard.TargetProperty="Opacity" To="{DynamicResource DisabledOpacity}" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="ReadOnly">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0"  Storyboard.TargetName="Border" Storyboard.TargetProperty="Opacity" To="{DynamicResource DisabledOpacity}" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0:0:0.3">
+                                        <VisualTransition.GeneratedEasingFunction>
+                                            <CircleEase EasingMode="EaseOut"/>
+                                        </VisualTransition.GeneratedEasingFunction>
+                                    </VisualTransition>
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Focused" >
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="FocusedVisual" To="1" Duration="0"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unfocused" />
+                            </VisualStateGroup>
+
+                            <VisualStateGroup x:Name="ValidateStates">
+                                <VisualState x:Name="Valid" />
+                                <VisualState x:Name="InvalidUnfocus">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="ValidationErrorElement" Storyboard.TargetProperty="(FrameworkElement.Opacity)" To="1"  Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="InvalidFocused">
+                                    <Storyboard>
+                                        <DoubleAnimation  Storyboard.TargetName="FocusedVisual" Storyboard.TargetProperty="(FrameworkElement.Opacity)" To="0" Duration="0" />
+                                        <DoubleAnimation  Storyboard.TargetName="ValidationErrorElement" Storyboard.TargetProperty="(FrameworkElement.Opacity)" To="1" Duration="0" />
+                                        <!--<BooleanAnimationUsingKeyFrames Storyboard.TargetName="validationTooltip" Storyboard.TargetProperty="IsOpen" Duration="0:0:0" >
+                                            <DiscreteBooleanKeyFrame Value="true" KeyTime="0:0:0" />
+                                        </BooleanAnimationUsingKeyFrames>-->
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Border x:Name="Border" CornerRadius="3" Background="{TemplateBinding Background}" BorderBrush="#CCCCCC" BorderThickness="{TemplateBinding BorderThickness}" />
+                        <Border x:Name="BorderOver" CornerRadius="3" BorderThickness="{TemplateBinding BorderThickness}" Opacity="0" BorderBrush="#CCCCCC" />
+                        <Border x:Name="FocusedVisual" CornerRadius="3" Opacity="0" BorderBrush="#CCCCCC" BorderThickness="{TemplateBinding BorderThickness}" />
+                        <Border x:Name="ValidationErrorElement" CornerRadius="3" BorderBrush="#CCCCCC" BorderThickness="1" Opacity="0" >
+                            <!--<ToolTipService.ToolTip>
+                                <ToolTip x:Name="validationTooltip" DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}" Placement="Right" PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Template="{StaticResource ValidationTemplate}">
+                                </ToolTip>
+                            </ToolTipService.ToolTip>-->
+                        </Border>
+                        
+                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                    </Grid>
+                    
+                    
+                </ControlTemplate>
                 
-            </DataTrigger>
-        </Style.Triggers>
-    </Style>-->
+            </Setter.Value>
+            
+        </Setter>
 
-
-    <Style TargetType="TextBox" BasedOn="{StaticResource ControlBaseStyle}">
-        <Style.Resources>
-            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None" >
-                <VisualBrush.Visual>
-                    <Label Content="Input Information" Foreground="LightGray" />
-                </VisualBrush.Visual>
-            </VisualBrush>
-        </Style.Resources>
-        <Style.Triggers>
-            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-            </Trigger>
-            <Trigger Property="Text" Value="{x:Null}">
-                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-            </Trigger>
-            <!--<Trigger Property="IsKeyboardFocused" Value="True">
-                <Setter Property="Background" Value="Wheat" />
-            </Trigger>-->
-
-        </Style.Triggers>
     </Style>
 
+
+
+    <Style x:Key="TextBoxInputStyle" TargetType="TextBox" BasedOn="{StaticResource ControlBaseStyle}">
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ControlForeground}" />
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+
+
+
+
+
+
 </ResourceDictionary>
+
+
+
+
+    <!--<Style  TargetType="TextBox" BasedOn="{StaticResource ControlBaseStyle}">
+
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource ControlFamilyFont}" />
+        <Setter Property="FontSize" Value="{DynamicResource ControlFontSize}" />
+        <Setter Property="Foreground" Value="{DynamicResource ControlForeground}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource ControlForeground}" />
+        <Setter Property="CaretBrush" Value="Black" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Width" Value="350" />
+        
+    </Style>
+
+    
+
+
+</ResourceDictionary>-->
+
+
+
+<!--<Style.Resources>
+    <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None" >
+        <VisualBrush.Visual>
+            <Label Content="Input Information" Foreground="LightGray" />
+        </VisualBrush.Visual>
+    </VisualBrush>
+</Style.Resources>
+<Style.Triggers>
+    <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+        <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+    </Trigger>
+    <Trigger Property="Text" Value="{x:Null}">
+        <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+    </Trigger>
+    --><!--<Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter Property="Background" Value="Wheat" />
+            </Trigger>--><!--
+
+</Style.Triggers>-->

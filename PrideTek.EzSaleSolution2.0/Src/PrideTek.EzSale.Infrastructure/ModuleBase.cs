@@ -12,13 +12,11 @@ namespace PrideTek.EzSale.Infrastructure
 {
     public abstract class ModuleBase : IModule
     {
-        //[Dependency] 
+     
         public IRegionManager RegionManager { get; private set; }
 
-        //[Dependency]
         public IUnityContainer Container { get; private set; }
-
-        //[Dependency]
+     
         public INavigationManager NavManager { get; private set; }
 
         public ModuleBase(INavigationManager navManager, IRegionManager regionManager, IUnityContainer container)

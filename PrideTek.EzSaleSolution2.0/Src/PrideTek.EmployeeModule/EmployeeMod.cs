@@ -9,6 +9,7 @@ using PrideTek.Shell.Core.Navigation;
 using Prism.Regions;
 using PrideTek.EmployeeModule.Interfaces;
 using Prism.Unity;
+using Serilog;
 
 namespace PrideTek.EmployeeModule
 {
@@ -35,6 +36,9 @@ namespace PrideTek.EmployeeModule
             Container.RegisterType<IEmployeeToolbarViewModel, EmployeeToolbarViewModel>();
             Container.RegisterType<IEmployeesViewModel, EmployeesViewModel>();
             Container.RegisterType<IEmployeeAddViewModel, EmployeeAddViewModel>();
+
+
+           
         }
     }
 }

@@ -1,0 +1,3 @@
+Log message 2017-Jan-05-14:59[Information]Edited employee: Edit employee Hello, 01/05/2017 14:59:12, 1ddaa381-908d-4cfd-a6d3-3cfe95f9ae32
+Log message 2017-Jan-05-15:12[Information]New Employee was added: asda dsadas, 01/05/2017 15:12:57, 7653323e-6466-4133-ad61-b92a22ce7740
+Log message 2017-Jan-05-15:12[Error]Test Error

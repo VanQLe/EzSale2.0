@@ -6,15 +6,19 @@
              xmlns:local="clr-namespace:PrideTek.EmployeeModule"
              xmlns:inf="clr-namespace:PrideTek.EzSale.Infrastructure;assembly=PrideTek.EzSale.Infrastructure"
              xmlns:behaviors="clr-namespace:PrideTek.EzSale.Infrastructure.Behaviors;assembly=PrideTek.EzSale.Infrastructure"
-             mc:Ignorable="d" >
+             mc:Ignorable="d"  >
 
-    <Grid Name="MainGrid">
+       
+        <Grid Grid.Column="0" Name="MainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="10*" />
-            <RowDefinition Height="1*" />
+            <RowDefinition Height="50px" />
+            <RowDefinition Height="3px" />
+            <RowDefinition Height="700px"/>
+          
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+
+        <!--Close tab section -->
+            <Grid Grid.Row="0" Background="#FAFAFA">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="15*"/>
                 <ColumnDefinition Width="1*"/>
@@ -22,242 +26,230 @@
             <Label Grid.Column="0" Content="{Binding ViewTitle}"/>
             <Button Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" Content="x"  Command="{Binding CancelCommand}" CommandParameter="{x:Static inf:ViewNames.EmployeesView}"/>
         </Grid>
-        <Grid Grid.Row="1" >
+
+
+        <!--Separator -->
+        <Grid Grid.Row="1"  Background="#FAFAFA">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="66.6px"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Rectangle Grid.Column="0"  Fill="{DynamicResource NormalElementColor}"/>
+            <Separator Grid.Column="1" Margin="0,0,0,0"/>
+
+        </Grid>
+        
+        <!--Info Section-->
+        <Grid Grid.Row="2" >
             <TabControl>
-                <TabItem Header="{Binding TabTitle}">
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Pridetek.EzSale.Infrastructure;Component/Images/information_icon.png" Width="15px" Height="15px"/>
+                            <Label Content="Info" FontSize="15" />
+                        </StackPanel>
+                    </TabItem.Header>
                     <Grid Name="GetInfo">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="2*" />
-                            <RowDefinition Height="3*" />
+                            <RowDefinition Height="120px" />
+                            <RowDefinition Height="110px" />
+                            <RowDefinition Height="160px" />
+                            <RowDefinition Height="160px" />
+                            <RowDefinition Height="60px" />
                         </Grid.RowDefinitions>
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="150px"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="100px"/>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="500px"/>
+                            <ColumnDefinition Width="150px"/>
+                            <ColumnDefinition Width="500px"/>
                         </Grid.ColumnDefinitions>
 
+
                         <!--First Row -->
-                        <Button Background="Red" Grid.Row="0" Grid.Column="0" Height="30" Width="30" Content="+" HorizontalAlignment="Left"/>
+                        <Separator Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Bottom"/>
+                        <Grid Grid.Column="0" Grid.Row="0">
+                            <Button Background="White"  BorderBrush="#0E6390" Foreground="#0E6390" Grid.Row="0" Grid.Column="0" Height="80" Width="80" Content="+" HorizontalAlignment="Left" Margin="25,0,0,0"/>
+                        </Grid>
+                        
 
                         <Grid Grid.Row="0" Grid.Column="1" >
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
                             </Grid.RowDefinitions>
-                            <TextBox Text="{Binding SelectedItem.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" />
-                            <TextBox Text="{Binding SelectedItem.LastName, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2"/>
+                            <TextBox Style="{DynamicResource InputTBStyle}" Grid.Row="0" Text="{Binding SelectedItem.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Margin="0,10,0,4" />
+                            <TextBox Style="{DynamicResource InputTBStyle}" Grid.Row="2"  Text="{Binding SelectedItem.LastName, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,10"/>
                         </Grid>
 
                         <Grid Grid.Row="0" Grid.Column="2">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
                             </Grid.RowDefinitions>
-
-                            <Label Background="Red" Grid.Row="1" FontSize="10" Content="Title/Position"/>
-                            <Label Grid.Row="2" FontSize="10" Content="Date of birth"/>
+                            <Label Grid.Row="0" Style="{DynamicResource InputLabelStyle}" Content="Title/Position"/>
+                            <Label Grid.Row="1" Style="{DynamicResource InputLabelStyle}" Content="Date of birth"/>
                         </Grid>
 
                         <Grid Grid.Row="0" Grid.Column="3">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
                             </Grid.RowDefinitions>
-                            <ComboBox Grid.Row="1"  Foreground="Gray"/>
-                            <DatePicker Grid.Row="2" FontSize="10" Foreground="Gray" SelectedDate="{Binding SelectedItem.DateOfBirth, UpdateSourceTrigger=PropertyChanged}"/>
+                            <ComboBox Grid.Row="0" ItemsSource="{Binding ComboPositionsList}" Text="{Binding ComboTextPositions,Mode=OneWayToSource}" SelectedItem="{Binding SelectedItem.Position}" />
+                            <DatePicker Grid.Row="1" FontSize="12" Width="350" Height="35" SelectedDate="{Binding SelectedItem.DateOfBirth, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,10"/>
                         </Grid>
 
                         <!--Second Row -->
+                        <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Bottom"/>
+                        <!--Colunm 0-->
                         <Grid Grid.Row="1" Grid.Column="0">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
                             </Grid.RowDefinitions>
-
-                            <Label Grid.Row="1" FontSize="10" Content="Employee code"/>
-                            <Label Grid.Row="2" FontSize="10" Content="Work Phone"/>
+                                <Label Grid.Row="0" Style="{DynamicResource InputLabelStyle}" Content="Employee Code"/>
+                                <Label Grid.Row="1" Style="{DynamicResource InputLabelStyle}" Content="Work Phone" />
                         </Grid>
-
+                        <!--Colunm 2-->
                         <Grid Grid.Row="1" Grid.Column="1">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
                             </Grid.RowDefinitions>
-                            <TextBox Grid.Row="1" Text="{Binding SelectedItem.EmployeeCode, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
-                            <TextBox Grid.Row="2" Text="{Binding SelectedItem.WorkPhone, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
+                            <TextBox Style="{DynamicResource InputTBStyle}" Grid.Row="0" Text="{Binding SelectedItem.EmployeeCode, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" VerticalAlignment="Center" />
+                            <TextBox Style="{DynamicResource InputTBStyle}" Grid.Row="1" Text="{Binding SelectedItem.WorkPhone, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
 
-                        <Grid Grid.Row="1" Grid.Column="2">
+                            <Grid Grid.Row="1" Grid.Column="2">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
                             </Grid.RowDefinitions>
-
-                            <Label Grid.Row="1" FontSize="10" Content="Hourly wage"/>
-                            <Label Grid.Row="2" FontSize="10" Content="Cell phone"/>
+                                <Label Grid.Row="0" Style="{DynamicResource InputLabelStyle}" Content="Hourly wage"/>
+                                <Label Grid.Row="1" Style="{DynamicResource InputLabelStyle}" Content="Cell phone"/>
                         </Grid>
 
                         <Grid Grid.Row="1" Grid.Column="3">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
                             </Grid.RowDefinitions>
-                            <ComboBox Grid.Row="1" ItemsSource="{x:Static inf:ComboBoxData.HourlyWages}" SelectedItem="{Binding SelectedItem.HourlyWage}"/>
-                            <TextBox Grid.Row="2" Text="{Binding SelectedItem.CellPhone, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
+                            <ComboBox Grid.Row="0" IsEditable="True" ItemsSource="{x:Static inf:ComboBoxData.HourlyWages}" SelectedItem="{Binding SelectedItem.HourlyWage}" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBox Grid.Row="1"   Style="{DynamicResource InputTBStyle}" Text="{Binding SelectedItem.CellPhone, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
 
                         <!--Third Row -->
+                        <Separator Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Bottom"/>
+
                         <Grid Grid.Row="2" Grid.Column="0">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
                             </Grid.RowDefinitions>
 
-                            <Label Grid.Row="1" FontSize="10" Content="Address"/>
-                            <Label Grid.Row="2" FontSize="10" Content="City"/>
-                            <Label Grid.Row="3" FontSize="10" Content="Country"/>
+                                <Label Grid.Row="0" Style="{DynamicResource InputLabelStyle}" Content="Address"/>
+                                <Label Grid.Row="1" Style="{DynamicResource InputLabelStyle}" Content="City"/>
+                                <Label Grid.Row="2" Style="{DynamicResource InputLabelStyle}" Content="Country"/>
                         </Grid>
 
                         <Grid Grid.Row="2" Grid.Column="1">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
                             </Grid.RowDefinitions>
-
-                            <TextBox Grid.Row="1" Text="{Binding SelectedItem.Address, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
-                            <TextBox Grid.Row="2" Text="{Binding SelectedItem.City, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
-                            <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{x:Static inf:ComboBoxData.Countries}" FontSize="6" SelectedItem="{Binding SelectedItem.Country}"/>
+                            <TextBox Grid.Row="0" Style="{DynamicResource InputTBStyle}" Text="{Binding SelectedItem.Address, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBox Grid.Row="1"  Style="{DynamicResource InputTBStyle}" Text="{Binding SelectedItem.City, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                            <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{x:Static inf:ComboBoxData.Countries}"  SelectedItem="{Binding SelectedItem.Country}" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
 
                         <Grid Grid.Row="2" Grid.Column="2">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
                             </Grid.RowDefinitions>
 
-                            <Label Grid.Row="1" FontSize="10" Content="Address2"/>
-                            <Label Grid.Row="2" FontSize="10" Content="Zip"/>
-                            <Label Grid.Row="3" FontSize="10" Content="State/province"/>
+                                <Label Grid.Row="0" Style="{DynamicResource InputLabelStyle}" Content="Address2"/>
+                                <Label Grid.Row="1" Style="{DynamicResource InputLabelStyle}" Content="Zip"/>
+                                <Label Grid.Row="2" Style="{DynamicResource InputLabelStyle}" Content="State/province"/>
                         </Grid>
 
                         <Grid Grid.Row="2" Grid.Column="3">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
                             </Grid.RowDefinitions>
-
-                            <TextBox Grid.Row="1" Text="{Binding SelectedItem.Address2, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
-                            <TextBox Grid.Row="2" Text="{Binding SelectedItem.ZipCode, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
-                            <ComboBox Grid.Row="3" ItemsSource="{x:Static inf:ComboBoxData.States}"  FontSize="10" SelectedItem="{Binding SelectedItem.State}"/>
+                            <TextBox Grid.Row="0" Style="{DynamicResource InputTBStyle}" Text="{Binding SelectedItem.Address2, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBox Grid.Row="1" Style="{DynamicResource InputTBStyle}" Text="{Binding SelectedItem.ZipCode, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                            <ComboBox Grid.Row="2"  ItemsSource="{Binding ComboStatesList}" Text="{Binding ComboTextStates,Mode=OneWayToSource}" SelectedItem="{Binding SelectedItem.State}" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
+                        <Separator Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Bottom"/>
+
                         <!--Fourth Row -->
                         <Grid Grid.Row="3" Grid.Column="0">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
                             </Grid.RowDefinitions>
-
-                            <Label Grid.Row="1" FontSize="10" Content="Email"/>
-                            <Label Grid.Row="2" FontSize="10" Content="Pin code"/>
-                            <Label Background="Red" Grid.Row="3" FontSize="10" Content="Service Provider"/>
-                            <Label Background="Red" Grid.Row="4" FontSize="10" Content="Booking group"/>
+                            <Label Grid.Row="0" Style="{DynamicResource InputLabelStyle}" Content="Email"/>
+                            <Label Grid.Row="1" Style="{DynamicResource InputLabelStyle}" Content="Pin code"/>
+                            <Label Grid.Row="2" Style="{DynamicResource InputLabelStyle}" Content="Sales Person"/>
                         </Grid>
 
                         <Grid Grid.Row="3" Grid.Column="1">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
                             </Grid.RowDefinitions>
-
-                            <TextBox Grid.Row="1" Text="{Binding SelectedItem.Email, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
-                            <TextBox Grid.Row="2" Text="{Binding SelectedItem.PinCode, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"/>
-                            <ComboBox Grid.Row="3" Grid.Column="1"/>
-                            <ComboBox Grid.Row="4" Grid.Column="1"/>
+                            <TextBox Grid.Row="0" Style="{DynamicResource InputTBStyle}" Text="{Binding SelectedItem.Email, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBox Grid.Row="1"  Style="{DynamicResource InputTBStyle}" Text="{Binding SelectedItem.PinCode, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBox Grid.Row="2"  Style="{DynamicResource InputTBStyle}"  VerticalContentAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                         <Grid Grid.Row="3" Grid.Column="2">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
                             </Grid.RowDefinitions>
 
-                            <Label Grid.Row="1" FontSize="10" Content="Password"/>
-                            <Label Grid.Row="2" FontSize="10" Content="Access Permision"/>
-                            <Label Background="Red" Grid.Row="3" FontSize="10" Content="Service Provider"/>
-                            <Label Background="Red" Grid.Row="4" FontSize="10" Content="Assigned Location"/>
+                            <Label Grid.Row="0" Style="{DynamicResource InputLabelStyle}" Content="Password"/>
+                            <Label Grid.Row="1" Style="{DynamicResource InputLabelStyle}" Content="Access Permision"/>
+                            <Label Grid.Row="2" Style="{DynamicResource InputLabelStyle}" Content="Assigned Location"/>
                         </Grid>
 
                         <Grid Grid.Row="3" Grid.Column="4">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
+                                <RowDefinition Height="50px"/>
                             </Grid.RowDefinitions>
 
-                            <PasswordBox Grid.Row="1" Foreground="Gray" />
-                            <ComboBox  Name="AccessPermission" Grid.Row="2" Grid.Column="1" ItemsSource="{x:Static inf:ComboBoxData.AccessPermission}" SelectedItem="{Binding SelectedItem.AccessPermission,UpdateSourceTrigger=PropertyChanged}"/>
-                            <ComboBox Grid.Row="3" Grid.Column="1"  />
+                            <TextBox Grid.Row="0" Style="{DynamicResource InputTBStyle}"  VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                            <ComboBox   Grid.Row="1"  Name="AccessPermission"  ItemsSource="{x:Static inf:ComboBoxData.AccessPermission}" SelectedItem="{Binding SelectedItem.AccessPermission,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                            <ComboBox Grid.Row="2"   VerticalContentAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
+
+                        <Grid Grid.Row="4" Grid.ColumnSpan="2" >
+                            <StackPanel Orientation="Horizontal">
+                                <Button Style="{StaticResource ButtonStyle}" Content="Save" Grid.Column="0"  Width="100px" Height="40px"   Margin="10,0,1,0" Command="{Binding SaveCommand}" CommandParameter="{x:Static inf:ViewNames.EmployeesView}"/>
+                                <Button Style="{StaticResource ButtonStyle}" Foreground="White" Grid.Column="0"  Width="100px" Height="40px" Content="Reset" Margin="10,0,1,0" Command="{Binding ResetCommand}" />
+                                <Button Style="{StaticResource ButtonStyle}" Foreground="White" Grid.Column="0" Width="100px" Height="40px" Content="Cancel" Margin="10,0,1,0" Command="{Binding CancelCommand}" CommandParameter="{x:Static inf:ViewNames.EmployeesView}"/>
+                            </StackPanel>
+
+                        </Grid>
+
                     </Grid>
                 </TabItem>
             </TabControl>
         </Grid>
 
-        <Grid Grid.Row="2" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <StackPanel Orientation="Horizontal">
-                <Button Grid.Column="0"  Width="100px" Height="40px" Content="Save" Margin="10,0,1,0" Command="{Binding SaveCommand}" CommandParameter="{x:Static inf:ViewNames.EmployeesView}"/>
-                <Button Grid.Column="0"  Width="100px" Height="40px" Content="Reset" Margin="10,0,1,0" Command="{Binding ResetCommand}" />
-                <!--CommandParameter="{x:Static inf:ViewNames.EmployeesView}"/>-->
-                <Button Grid.Column="0" Width="100px" Height="40px" Content="Cancel" Margin="10,0,1,0" Command="{Binding CancelCommand}" CommandParameter="{x:Static inf:ViewNames.EmployeesView}"/>
-            </StackPanel>
-
-        </Grid>
     </Grid>
+    <!--</Grid>-->
 </UserControl>

@@ -43,20 +43,24 @@
                 </StackPanel>
             </Grid>
         </Grid>
-
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="10*"/>
             </Grid.ColumnDefinitions>
-
             <Grid Grid.Column="0" Name="ToolbarGrid">
                 <ItemsControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.ToolbarRegion }" />
             </Grid>
-
             <Grid Name="ContentRegionGrid" Grid.Column="1">
-                <ContentControl  prism:RegionManager.RegionName="{x:Static inf:RegionNames.ContentRegion }" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="80px" />
+                </Grid.RowDefinitions>
+                <ContentControl Grid.Row="0"  prism:RegionManager.RegionName="{x:Static inf:RegionNames.ContentRegion }" HorizontalAlignment="Stretch"  />
+                <ContentControl Grid.Row="1"  prism:RegionManager.RegionName="{x:Static inf:RegionNames.SupportRegion}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0"/>
             </Grid>
+
+            <GridSplitter Grid.Column="1" Width="2" VerticalAlignment="Stretch" HorizontalAlignment="Left" Background="Black"/>
         </Grid>
 
 

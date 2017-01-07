@@ -21,7 +21,7 @@ namespace PrideTek.EmployeeModule
         {
             ViewHeader = "Employees";
             NavCommand = new DelegateCommand<string>(NavTo);
-            ApplicationCommands.NavContentRegCommand.RegisterCommand(NavCommand);
+           // ApplicationCommands.NavContentRegCommand.RegisterCommand(NavCommand);
 
             _navManager = navManager;
             _navItem = new NavigationItem();

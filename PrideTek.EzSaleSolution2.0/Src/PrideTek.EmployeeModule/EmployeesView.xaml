@@ -9,9 +9,9 @@
              xmlns:data="clr-namespace:PrideTek.EzSale.Models.Entities;assembly=PrideTek.EzSale.Models"
              xmlns:ie="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:converters="clr-namespace:PrideTek.Shell.Core;assembly=PrideTek.Shell.Core"
-             mc:Ignorable="d" 
-             
-             d:DesignHeight="400" d:DesignWidth="400">
+             mc:Ignorable="d" >
+
+
     <UserControl.Resources>
         <converters:DebugDataBindingConverter x:Key="DebugDataBindingConverter" />
     </UserControl.Resources>
@@ -62,7 +62,7 @@
                 <DataGrid.InputBindings>
                     <MouseBinding
                         MouseAction="LeftDoubleClick"
-                        Command="{Binding SelectedItemChangedCommand}"
+                        Command="{Binding SelectedItemSelectedCommand}"
                         CommandParameter="{Binding ElementName=EmployeeDataGrid, Path=SelectedItem}"/>  
                 </DataGrid.InputBindings>
                 <DataGrid.CellStyle>

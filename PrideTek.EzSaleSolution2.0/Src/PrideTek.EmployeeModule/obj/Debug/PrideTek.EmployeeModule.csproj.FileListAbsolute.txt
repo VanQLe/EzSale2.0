@@ -66,3 +66,17 @@ C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Employee
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EmployeeModule\bin\Debug\ru\Microsoft.Expression.Interactions.resources.dll
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EmployeeModule\bin\Debug\zh-Hans\Microsoft.Expression.Interactions.resources.dll
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EmployeeModule\bin\Debug\zh-Hant\Microsoft.Expression.Interactions.resources.dll
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EmployeeModule\obj\Debug\EmployeeScheduleView.g.cs
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EmployeeModule\obj\Debug\EmployeeScheduleView.baml
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EmployeeModule\bin\Debug\Serilog.dll
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EmployeeModule\bin\Debug\Serilog.Sinks.File.dll
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EmployeeModule\bin\Debug\Serilog.xml
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EmployeeModule\bin\Debug\Serilog.Sinks.File.xml
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EmployeeModule\bin\Debug\Serilog.Formatting.Compact.dll
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EmployeeModule\bin\Debug\Serilog.Sinks.PeriodicBatching.dll
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EmployeeModule\bin\Debug\Serilog.Sinks.RollingFile.dll
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EmployeeModule\bin\Debug\Serilog.Sinks.Seq.dll
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EmployeeModule\bin\Debug\Serilog.Formatting.Compact.xml
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EmployeeModule\bin\Debug\Serilog.Sinks.PeriodicBatching.xml
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EmployeeModule\bin\Debug\Serilog.Sinks.RollingFile.xml
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EmployeeModule\bin\Debug\Serilog.Sinks.Seq.xml

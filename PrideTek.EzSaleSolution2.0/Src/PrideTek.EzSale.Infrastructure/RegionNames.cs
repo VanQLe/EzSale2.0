@@ -12,6 +12,6 @@ namespace PrideTek.EzSale.Infrastructure
         public static string ContentRegion = "ContentRegion";
         public static string StatusRegion = "StatusRegion";
         public static string SettingRegion = "SettingRegion";
-        public static string SubContentRegion = "SubContentRegion";
+        public static string SupportRegion = "SupportRegion";
     }
 }

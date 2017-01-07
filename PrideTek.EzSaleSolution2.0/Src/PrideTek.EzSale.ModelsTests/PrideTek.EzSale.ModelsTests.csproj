@@ -54,6 +54,7 @@
     <Compile Include="Entities\BasicTests.cs" />
     <Compile Include="Entities\ChangeNotificationSimpleProperty.cs" />
     <Compile Include="Entities\ChangeTrackingSimpleProperty.cs" />
+    <Compile Include="Entities\ValidationSimpleProperty.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

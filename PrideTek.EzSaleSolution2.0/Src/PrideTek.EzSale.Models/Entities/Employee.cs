@@ -34,6 +34,7 @@ namespace PrideTek.EzSale.Models.Entities
         private long? _employeeCode;
         //Database property
         private bool? _isDeleted = false;
+        private string _position;
 
         public override long? Id
         {
@@ -311,6 +312,19 @@ namespace PrideTek.EzSale.Models.Entities
             set
             {
                 _employeeCode = value;
+            }
+        }
+
+        public string Position
+        {
+            get
+            {
+                return _position;
+            }
+
+            set
+            {
+                _position = value;
             }
         }
 

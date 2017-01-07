@@ -8,17 +8,32 @@
              xmlns:inf="clr-namespace:PrideTek.EzSale.Infrastructure;assembly=PrideTek.EzSale.Infrastructure"
              mc:Ignorable="d" >
 
-    <Menu>
-        <MenuItem Header="{Binding ViewHeader}" Width="150">
-            <MenuItem Header="Employees"  Command="{Binding NavCommand}" CommandParameter="{x:Static inf:ViewNames.EmployeesView}">
+    <Menu >
+        <MenuItem Header="Employees" Width="150">
+            <MenuItem.Icon>
+                <Image Source="/PrideTek.EzSale.Infrastructure;Component/images/UserIcon.png"/>
+            </MenuItem.Icon>
+            
+            
+            <MenuItem Header="Employees List"  Command="{Binding NavCommand}" CommandParameter="{x:Static inf:ViewNames.EmployeesView}">
                 <MenuItem.Icon>
                     <Image Source="/PrideTek.EzSale.Infrastructure;Component/images/DashedLines.gif" />
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem.Icon>
-                <Image Source="/PrideTek.EzSale.Infrastructure;Component/images/UserIcon.png"/>
-            </MenuItem.Icon>
+
+            <MenuItem Header="Employees Schedule" >
+                <!--Command="{Binding NavCommand}" CommandParameter="{x:Static inf:ViewNames.EmployeesView}">-->
+                <MenuItem.Icon>
+                    <Image Source="/PrideTek.EzSale.Infrastructure;Component/images/DashedLines.gif" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+
+
+
         </MenuItem>
+
+
     </Menu>
 
 </UserControl>

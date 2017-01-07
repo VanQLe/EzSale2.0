@@ -1,0 +1,66 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:PrideTek.EzSale.Infrastructure.Styles">
+
+
+
+
+
+
+
+
+    <FontFamily x:Key="NormalFontFamily" >Segoe UI</FontFamily>
+    <FontFamily x:Key="InputFontFamily" >Segoe UI</FontFamily>
+    <FontFamily x:Key="ControlFontFamily" >Segoe UI</FontFamily>
+    <FontFamily x:Key="HeaderFontFamily" >Segoe UI</FontFamily>
+    <FontFamily x:Key="DataGridFontFamily" >Segoe UI</FontFamily>
+
+    <sys:Double x:Key="NormalFontSize">12</sys:Double>
+    <sys:Double x:Key="InputFontSize">12</sys:Double>
+    <sys:Double x:Key="ControlFontSize">12</sys:Double>
+
+    <sys:Double x:Key="DataGridFontSize">12</sys:Double>
+    <sys:Double x:Key="DataGridHeaderFontSize">13</sys:Double>
+
+    <sys:Double x:Key="Heading1FontSize">21</sys:Double>
+    <sys:Double x:Key="Heading2FontSize">18</sys:Double>
+    <sys:Double x:Key="Heading3FontSize">16</sys:Double>
+    <sys:Double x:Key="Heading4FontSize">14</sys:Double>
+
+    <sys:Double x:Key="ControlMinWidth">50</sys:Double>
+    <sys:Double x:Key="ControlHeight">28</sys:Double>
+    <sys:Double x:Key="LargeControlHeight">40</sys:Double>
+    <sys:Double x:Key="DataGridRowHeight">25</sys:Double>
+    <sys:Double x:Key="DisabledOpacity">0.5</sys:Double>
+    <sys:Double x:Key="HoverOpacity">0.3</sys:Double>
+    <Thickness x:Key="ControlBorderThickness">1,1,1,1</Thickness>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ResourceDictionary>

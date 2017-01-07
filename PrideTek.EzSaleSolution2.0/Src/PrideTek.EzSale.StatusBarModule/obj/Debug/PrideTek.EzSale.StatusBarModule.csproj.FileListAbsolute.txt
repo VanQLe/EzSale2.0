@@ -30,3 +30,5 @@ C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.S
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.StatusBarModule\obj\Debug\PrideTek.EzSale.StatusBarModule_MarkupCompile.lref
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.StatusBarModule\obj\Debug\StatusBarView.baml
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.StatusBarModule\obj\Debug\PrideTek.EzSale.StatusBarModule.g.resources
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.StatusBarModule\bin\Debug\Serilog.dll
+C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.StatusBarModule\bin\Debug\Serilog.xml

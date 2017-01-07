@@ -1,7 +1,9 @@
 ﻿using PrideTek.Shell.Common.ViewModels;
+using PrideTek.Shell.Core.Errors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace PrideTek.EzSale.Models.Entities
 {
-    public class ModelWrapper<T> : NotificationObject, IRevertibleChangeTracking
+    public class ModelWrapper<T> : NotifyDataErrorInfoBase, IRevertibleChangeTracking
     {
 
         private Dictionary<string, object> _originalValues;//this dictionary will hold all the orignal values for all the properties for the model.
@@ -17,7 +19,7 @@ namespace PrideTek.EzSale.Models.Entities
         //The Model property that the wrapper created from
         public T Model { get; private set; }
 
-      
+
         public ModelWrapper(T model)
         {
             if (model == null)
@@ -26,17 +28,21 @@ namespace PrideTek.EzSale.Models.Entities
             }
             Model = model;//now Model reference the friend that was sent in.
             _originalValues = new Dictionary<string, object>(); //initialize the _originalvalue dictionary
+
+            Validate();
         }
 
         /// <summary>
         /// Return true if the model has changes by looking at the _originalValue dictionary.  If there are any values in the dictionary, that mean the Model has been changed.
         /// </summary>
-       
-    
+
+
         protected bool GetIsChanged(string propertyName)
         {
             return _originalValues.ContainsKey(propertyName);//if the _originalValue dictionary contain the propertyName (key), that mean the value has been changed, since there is an originalValue within the _originalValue dictionary
         }
+
+        public bool IsValid => !HasErrors;
 
         /// <summary>
         /// A generic method that only require the caller type to get the property value
@@ -60,7 +66,7 @@ namespace PrideTek.EzSale.Models.Entities
         {
             //if the _originalValue dictionary has the propertyName return the value, else call the GetValue() method to get the currentvalue for the property.
             return _originalValues.ContainsKey(propertyName)
-                ?(TValue) _originalValues[propertyName]//return original value
+                ? (TValue)_originalValues[propertyName]//return original value
                 : GetValue<TValue>(propertyName);//else return the value currently value of the property.
         }
 
@@ -76,14 +82,50 @@ namespace PrideTek.EzSale.Models.Entities
             var currentValue = propertyInfo.GetValue(Model);//Get the value of the current value from the Modeltype-property field.  If newValue does not equal currentValue, the currentValue will be the originalValue for this property.
             if (!Equals(currentValue, newValue))
             {
-                UpdateOriginalValue(currentValue,newValue, propertyName);//update the orignal value since a new value will be set
+                UpdateOriginalValue(currentValue, newValue, propertyName);//update the orignal value since a new value will be set
                 propertyInfo.SetValue(Model, newValue);
+
+                Validate();
+
                 NotifyPropertyChanged(propertyName);//Fire notify changed property.
                 NotifyPropertyChanged((propertyName) + "IsChanged");//Fire Notify changed for PropertyIsChanged changed
             }
         }
 
-        private void UpdateOriginalValue(object currentValue,object newValue, string propertyName)
+        private void Validate()//validate the whole object
+        {
+            ClearErrors();//remove errors
+
+            var results = new List<ValidationResult>();
+            var context = new ValidationContext(this);
+            Validator.TryValidateObject(this, context, results, true);
+
+            if (results.Any())//if true, there are errors
+            {
+                var propertyNames = results.SelectMany(r => r.MemberNames).Distinct().ToList();
+
+                foreach (var propertyName in propertyNames)
+                {
+                    Errors[propertyName] = results
+                        .Where(r => r.MemberNames.Contains(propertyName))
+                        .Select(r => r.ErrorMessage)
+                        .Distinct().ToList();
+
+                    OnErrorsChanged(propertyName);
+                }
+
+
+                NotifyPropertyChanged(nameof(IsValid));
+            }
+
+
+            NotifyPropertyChanged(nameof(IsValid));
+        }
+
+
+
+
+        private void UpdateOriginalValue(object currentValue, object newValue, string propertyName)
         {
             if (!_originalValues.ContainsKey(propertyName))
             {
@@ -94,12 +136,12 @@ namespace PrideTek.EzSale.Models.Entities
             else
             {
                 //Remove the original value from the dictionary if the new value is equal.
-                if(Equals(_originalValues[propertyName], newValue))
+                if (Equals(_originalValues[propertyName], newValue))
                 {
                     _originalValues.Remove(propertyName);
                     NotifyPropertyChanged("IsChanged");
                 }
-               
+
             }
             //NotifyPropertyChanged("IsChanged");//Notify that the ModelIsChange has been changed.
         }
@@ -123,13 +165,18 @@ namespace PrideTek.EzSale.Models.Entities
             _originalValues.Clear();//clear the dictionary once all the value has set back to it's original value.
             NotifyPropertyChanged("");
             NotifyPropertyChanged("IsChanged");
+
+            Validate();//check if the model is valid after reject changes.
         }
 
         /// <summary>
         /// Determine if this Model has been changed.  Return true if model has changed.
         /// </summary>
         public bool IsChanged => _originalValues.Count > 0;
-   
+
+
+
+
 
     }
 }

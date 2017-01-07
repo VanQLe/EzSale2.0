@@ -71,6 +71,18 @@
       <HintPath>..\packages\Prism.Wpf.6.2.0\lib\net45\Prism.Wpf.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.3.0\lib\net46\Serilog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.File.3.1.1\lib\net45\Serilog.Sinks.File.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog.Sinks.RollingFile, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.RollingFile.3.2.0\lib\net45\Serilog.Sinks.RollingFile.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -142,6 +154,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PrideTek.CustomerModule\PrideTek.CustomerModule.csproj">
+      <Project>{0F0AB3E0-B510-4E09-819F-EA77DF1433F6}</Project>
+      <Name>PrideTek.CustomerModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PrideTek.EmployeeModule\PrideTek.EmployeeModule.csproj">
       <Project>{96ba7bb1-d1dc-4fbf-a1c9-2eea9184bf77}</Project>
       <Name>PrideTek.EmployeeModule</Name>
@@ -169,6 +185,10 @@
     <ProjectReference Include="..\PrideTek.Shell.Core\PrideTek.Shell.Core.csproj">
       <Project>{dbf43cd5-be14-4202-9a9b-c10c72fd2625}</Project>
       <Name>PrideTek.Shell.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pridetek.SupportModule\Pridetek.SupportModule.csproj">
+      <Project>{D282CE09-98EF-40A2-AB59-6C9D3CB3A2E9}</Project>
+      <Name>Pridetek.SupportModule</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

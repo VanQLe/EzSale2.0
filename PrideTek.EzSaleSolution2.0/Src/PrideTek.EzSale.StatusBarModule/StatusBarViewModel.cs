@@ -56,7 +56,7 @@ namespace PrideTek.EzSale.StatusBarModule
                  await UpdateAsyn(msg);
                 //throw new NullReferenceException();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

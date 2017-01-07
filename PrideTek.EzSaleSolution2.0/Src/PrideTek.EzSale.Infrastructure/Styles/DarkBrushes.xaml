@@ -1,0 +1,139 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:PrideTek.EzSale.Infrastructure.Styles"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--Foreground-->
+    <Color x:Key="ForegroundColor1">#000000</Color>
+    <Color x:Key="ForegroundColor2">#1e1e1e</Color>
+    <Color x:Key="ForegroundColor3">#282828</Color>
+    <Color x:Key="ForegroundColor4">#444444</Color>
+    <Color x:Key="ForegroundColor5">#545454</Color>
+    <Color x:Key="ForegroundColor6">#676767</Color>
+    <Color x:Key="DisabledForegroundColor">#9A9A9A</Color>
+    <Color x:Key="ControlForegroundColor">#000000</Color>
+    <Color x:Key="MainWindowTitleForegroundColor">#717171</Color>
+    <Color x:Key="DockHeaderSelectedForegroundColor">#717171</Color>
+
+    <SolidColorBrush x:Key="Foreground1" Color="{DynamicResource ForegroundColor1}" />
+    <SolidColorBrush x:Key="Foreground2" Color="{DynamicResource ForegroundColor2}" />
+    <SolidColorBrush x:Key="Foreground3" Color="{DynamicResource ForegroundColor3}" />
+    <SolidColorBrush x:Key="Foreground4" Color="{DynamicResource ForegroundColor4}" />
+    <SolidColorBrush x:Key="Foreground5" Color="{DynamicResource ForegroundColor5}" />
+    <SolidColorBrush x:Key="Foreground6" Color="{DynamicResource ForegroundColor6}" />
+    <SolidColorBrush x:Key="DisabledForeground" Color="{DynamicResource DisabledForegroundColor}" />
+    <SolidColorBrush x:Key="ControlForeground" Color="{DynamicResource ControlForegroundColor}" />
+    <SolidColorBrush x:Key="MainWindowTitleForeground" Color="{DynamicResource MainWindowTitleForegroundColor}" />
+    <SolidColorBrush x:Key="DockHeaderSelectedForeground" Color="{DynamicResource DockHeaderSelectedForegroundColor}" />
+
+    <!--Background-->
+    <Color x:Key="TransparentBackground">#00000000</Color>
+    <Color x:Key="MainWindowBackgroundColor">#efeff2</Color>
+    <Color x:Key="MainBackgroundColor">#f6f6f6</Color>
+    <Color x:Key="ContentPanelBackgroundColor">#FFFFFF</Color>
+    <Color x:Key="PopupBackgroundColor">#E7E8EC</Color>
+    <Color x:Key="SubPanelBackgroundColor">#e8e8e8</Color>
+    <Color x:Key="ContentContainerBackgroundColor">#a6a6a6</Color>
+
+    <SolidColorBrush x:Key="ControlBackground" Color="{DynamicResource TransparentBackground}" />
+    <SolidColorBrush x:Key="MainWindowBackground" Color="{DynamicResource MainWindowBackgroundColor}" />
+    <SolidColorBrush x:Key="MainBackgroundBrush" Color="{DynamicResource MainBackgroundColor}" />
+    <SolidColorBrush x:Key="ContentPanelBackground" Color="{DynamicResource ContentPanelBackgroundColor}" />
+    <SolidColorBrush x:Key="PopupBackground" Color="{DynamicResource PopupBackgroundColor}" />
+    <SolidColorBrush x:Key="SubPanelBackground" Color="{DynamicResource SubPanelBackgroundColor}" />
+    <SolidColorBrush x:Key="ContentContainerBackground" Color="{DynamicResource ContentContainerBackgroundColor}" />
+
+    <!--Header Panel-->
+    <Color x:Key="HeaderPanelBackgroundColor">#dfdfdf</Color>
+    <Color x:Key="SubHeaderPanelBackgroundColor">#d28d30</Color>
+
+    <SolidColorBrush x:Key="HeaderPanelBackground" Color="{DynamicResource HeaderPanelBackgroundColor}" />
+    <SolidColorBrush x:Key="SubHeaderPanelBackground" Color="{DynamicResource SubHeaderPanelBackgroundColor}" />
+
+    <!--Border-->
+    <Color x:Key="ControlBorderColor">#878787</Color>
+    <Color x:Key="PanelBorderColor">#676767</Color>
+    <Color x:Key="SubHeaderPanelBorderColor">#555555</Color>
+    <Color x:Key="MainWindowBorderColor">#007acc</Color>
+    <Color x:Key="PopupBorderColor">#CCCEDB</Color>
+
+    <SolidColorBrush x:Key="ControlBorderBrush" Color="{DynamicResource ControlBorderColor}" />
+    <SolidColorBrush x:Key="PanelBorderBrush" Color="{DynamicResource PanelBorderColor}" />
+    <SolidColorBrush x:Key="SubHeaderPanelBorderBrush" Color="{DynamicResource SubHeaderPanelBorderColor}" />
+    <SolidColorBrush x:Key="MainWindowBorderBrush" Color="{DynamicResource MainWindowBorderColor}" />
+    <SolidColorBrush x:Key="PopupBorderBrush" Color="{DynamicResource PopupBorderColor}" />
+
+    <!--Hover-->
+    <Color x:Key="HoverColor1">#fdfdfd</Color>
+    <Color x:Key="HoverColor2">#aaaaaa</Color>
+    <Color x:Key="HoverColor3">#898989</Color>
+    <Color x:Key="ControlHoverBorderColor">#000000</Color>
+    <Color x:Key="ControlHoverColor">#00000000</Color>
+
+    <SolidColorBrush x:Key="HoverBrush1" Color="{DynamicResource HoverColor1}" />
+    <SolidColorBrush x:Key="HoverBrush2" Color="{DynamicResource HoverColor2}" />
+    <SolidColorBrush x:Key="HoverBrush3" Color="{DynamicResource HoverColor3}" />
+    <SolidColorBrush x:Key="ControlHoverBorderBrush" Color="{DynamicResource ControlHoverBorderColor}" />
+    <SolidColorBrush x:Key="ControlHoverBrush" Color="{DynamicResource ControlHoverColor}" />
+
+    <!--Focus-->
+    <Color x:Key="ControlFocusBorderColor">#007acc</Color>
+
+    <SolidColorBrush x:Key="ControlFocusBorderBrush" Color="{DynamicResource ControlFocusBorderColor}" />
+
+    <!--Core-->
+    <Color x:Key="DisabledColor">#9A9A9A</Color>
+    <Color x:Key="MainWindowDeactivatedColor">#989998</Color>
+
+    <SolidColorBrush x:Key="DisabledBrush" Color="{DynamicResource DisabledColor}" />
+    <SolidColorBrush x:Key="MainWindowDeactivatedBrush" Color="{DynamicResource MainWindowDeactivatedColor}" />
+
+    <!--Icon Brushes-->
+    <Color x:Key="IconColor1">#1E1E1E</Color>
+    <SolidColorBrush x:Key="IconBrush1" Color="{DynamicResource IconColor1}" />
+
+    <Color x:Key="IconColor2">#717171</Color>
+    <SolidColorBrush x:Key="IconBrush2" Color="{DynamicResource IconColor2}" />
+
+    <Color x:Key="PressedIconColor">#FFFFFF</Color>
+    <SolidColorBrush x:Key="PressedIconBrush" Color="{DynamicResource PressedIconColor}" />
+
+    <Color x:Key="HoverIconColor">#007acc</Color>
+    <SolidColorBrush x:Key="HoverIconBrush" Color="{DynamicResource HoverIconColor}" />
+
+    <!--Pattern Brush-->
+    <Color x:Key="PatternColor">#999999</Color>
+    <Color x:Key="PatternSelectedColor">#59a8de</Color>
+
+    <SolidColorBrush x:Key="PatternBrush" Color="{DynamicResource PatternColor}" />
+    <SolidColorBrush x:Key="PatternSelectedBrush" Color="{DynamicResource PatternSelectedColor}" />
+
+    <!--Grid Splitter-->
+    <Color x:Key="GridSplitterColor">#9d9fb0</Color>
+    <SolidColorBrush x:Key="GridSplitterBrush" Color="{DynamicResource GridSplitterColor}" />
+
+    <!--DockPanel-->
+    <Color x:Key="DockHeaderActiveColor">#007acc</Color>
+    <Color x:Key="DockHeaderSelectedColor">#CCCEDB</Color>
+
+    <SolidColorBrush x:Key="DockHeaderActive" Color="{DynamicResource DockHeaderActiveColor}" />
+    <SolidColorBrush x:Key="DockHeaderSelected" Color="{DynamicResource DockHeaderSelectedColor}" />
+
+    <!--ScrollViewer-->
+    <!--<Color x:Key="ScrollViewerBackgroundColor">#e8e8ec</Color>-->
+    <Color x:Key="ScrollViewerBackgroundColor">#d8d8dc</Color>
+    <SolidColorBrush x:Key="ScrollViewerBackground" Color="{DynamicResource ScrollViewerBackgroundColor}"/>
+
+    <Color x:Key="ScrollbarNormalFillColor">#FF858585</Color>
+    <SolidColorBrush x:Key="ScrollbarNormalFill" Color="{DynamicResource ScrollbarNormalFillColor}"/>
+
+    <Color x:Key="ScrollbarHoverFillColor">#FF565656</Color>
+    <SolidColorBrush x:Key="ScrollbarHoverFill" Color="{DynamicResource ScrollbarHoverFillColor}"/>
+
+    <Color x:Key="ScrollbarPressedFillColor">#FF00AADE</Color>
+    <SolidColorBrush x:Key="ScrollbarPressedFill" Color="{DynamicResource ScrollbarPressedFillColor}"/>
+
+    <Color x:Key="ScrollbarDisabledFillColor">#FFD7D7D7</Color>
+    <SolidColorBrush x:Key="ScrollbarDisabledFill" Color="{DynamicResource ScrollbarDisabledFillColor}" />
+
+</ResourceDictionary>

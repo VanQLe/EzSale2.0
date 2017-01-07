@@ -1,0 +1,3 @@
+This is a log message 2017-Jan-02-09:49[Information]asdas asdasdasdasd was added as a new employee successfully
+This is a log message 2017-Jan-02-10:19[Information]New user was added: "Test new" "Guid added", 01/02/2017 10:19:48, 77af39b3-508a-4301-9592-a7040f27c523
+Log message 2017-Jan-02-10:52[Information]New user was added: zzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzz, 01/02/2017 10:52:39, c8b8b769-e9ab-4901-91db-447b586fed20

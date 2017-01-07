@@ -42,15 +42,15 @@ namespace PrideTek.EmployeeModule
             _clientService = clientService;
             _navItem = new NavigationItem();
             NavCommand = new DelegateCommand<string>(NavTo);
-            DeleteCommand = new DelegateCommand(DeleteSelectedItems);
+            DeleteCommand = new DelegateCommand(DeleteSelectedItemsAsync);
             SortByPropertyValue = ComboBoxData.SortByPropertyValues[0];
             SortByState = ComboBoxData.SortByEntityState[0];
-            SelectedItemChangedCommand = new DelegateCommand<EmployeeWrapper>(SelectedItemChangedEvent);
+            SelectedItemSelectedCommand = new DelegateCommand<EmployeeWrapper>(SelectedItemSelectedEvent);
             _eventAggregator = eventAggregator;
-            ListAsync();
+            Task.Run(async() => await ListAsync());
         }
 
-        private async void DeleteSelectedItems()
+        private async void DeleteSelectedItemsAsync()
         {
             var messageBox = new MessageDialogService();
             var msgResult = messageBox.ShowYesNoDialog("Warning!", "Are you sure you to delete selected item(s)?", MessageDialogResult.No);
@@ -65,7 +65,7 @@ namespace PrideTek.EmployeeModule
                 }
                 catch(Exception)
                 {
-                    MessageBox.Show("Internal Error while deleing employees");
+                    _eventAggregator.GetEvent<StatusBarEvent>().Publish("Internal Error while deleing employees");
                 }
                 //await DeleteEmployeesAsync();
                 //foreach (var employeeWrapper in EmployeeItems.ToList())
@@ -83,7 +83,7 @@ namespace PrideTek.EmployeeModule
                 //    }
                 //}
             }
-            //ListAsync();
+            
         }
 
         private async Task DeleteEmployeesAsync()
@@ -102,7 +102,6 @@ namespace PrideTek.EmployeeModule
                             EmployeeItems.Remove(employeeWrapper);
                             _eventAggregator.GetEvent<StatusBarEvent>().Publish(Name + "was deleted");
                             Thread.Sleep(1000);
-                            //MessageBox.Show(Name + " was deleted");
                         }
                     }
                 }
@@ -110,7 +109,7 @@ namespace PrideTek.EmployeeModule
         }
 
         #region Display Employee list content
-        public DelegateCommand<EmployeeWrapper> SelectedItemChangedCommand { get; set; }
+        public DelegateCommand<EmployeeWrapper> SelectedItemSelectedCommand { get; set; }
         private EmployeeWrapper _selectedEmployee;
         public EmployeeWrapper SelectedEmployee
         {
@@ -171,9 +170,9 @@ namespace PrideTek.EmployeeModule
                 EmployeeItems = Employees.Select((item) => new EmployeeWrapper(item)).ToList();
                 EmployeeCollection = new ListCollectionView(EmployeeItems);
             }
-            catch
+            catch(Exception ex )
             {
-                _eventAggregator.GetEvent<StatusBarEvent>().Publish("Internal error while getting employees list");
+                _eventAggregator.GetEvent<StatusBarEvent>().Publish(ex.Message);
             }
 
             ////Employees = _clientService.GetList<Employee>();
@@ -199,18 +198,20 @@ namespace PrideTek.EmployeeModule
             try
             {
                 //Employees = new List<Employee>();
-                _eventAggregator.GetEvent<StatusBarEvent>().Publish("Getting Employees list");
-                var employees = await Task<List<Employee>>.Run(() =>
+              
+                await Task.Run(() =>
                 {
                     //Thread.Sleep(10000);
-                    return _clientService.GetList<Employee>();
+                    Employees = _clientService.GetList<Employee>();
                 });
-                
-                Employees = employees;
+
+                // Employees = employees;
+
+                _eventAggregator.GetEvent<StatusBarEvent>().Publish("Getting Employees list");
             }
-            catch
+            catch(Exception ex)
             {
-                _eventAggregator.GetEvent<StatusBarEvent>().Publish("Failed to get employees list");
+                _eventAggregator.GetEvent<StatusBarEvent>().Publish("Failed to get employees list," + "The exception: " + ex.Message);
             }
         }
 
@@ -235,7 +236,7 @@ namespace PrideTek.EmployeeModule
                 case "Cell Phone":
                     Employees = Employees.OrderBy(o => o.CellPhone).ToList();
                     break;
-                case "Employee Code":
+                case "Code":
                     Employees = Employees.OrderBy(o => o.PinCode).ToList();
                     break;
             }
@@ -283,7 +284,7 @@ namespace PrideTek.EmployeeModule
            
         }
        
-        private void SelectedItemChangedEvent(EmployeeWrapper selectedItem)
+        private void SelectedItemSelectedEvent(EmployeeWrapper selectedItem)
         {
             //SelectedEmployee = new EmployeeWrapper();
             SelectedEmployee = selectedItem;
@@ -335,7 +336,7 @@ namespace PrideTek.EmployeeModule
             set
             {
                 SetField(ref _sortByPropertyValue, value);
-                ListAsync();
+                Task.Run(async () => await ListAsync());
             }
            
         }
@@ -349,7 +350,7 @@ namespace PrideTek.EmployeeModule
             set
             {
                 SetField(ref _sortByState, value);
-                ListAsync();
+                Task.Run(async () => await ListAsync());
             }
             
         }

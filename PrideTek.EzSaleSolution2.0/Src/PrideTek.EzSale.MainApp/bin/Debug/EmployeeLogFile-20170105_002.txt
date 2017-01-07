@@ -1,0 +1,6 @@
+Log message 2017-Jan-05-15:13[Information]Edited employee: abc sadsada, 01/05/2017 15:13:01, 0750d3e6-a804-4c19-ac48-d38dd4fc3abe
+Log message 2017-Jan-05-15:13[Error]Test Error
+Log message 2017-Jan-05-15:14[Information]New Employee was added: new Error, 01/05/2017 15:14:19, 5b44d738-b82f-4e20-9d1c-19cfa9ba97d1
+Log message 2017-Jan-05-15:14[Error]Test Error
+Log message 2017-Jan-05-15:15[Information]New Employee was added: Tessssssssssssss dfdsfs, 01/05/2017 15:15:59, 81d565a6-8623-4976-93b6-051a387817df
+Log message 2017-Jan-05-15:15[Error]Test Error

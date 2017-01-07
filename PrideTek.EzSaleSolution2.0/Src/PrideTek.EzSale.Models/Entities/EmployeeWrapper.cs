@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,10 +45,10 @@ namespace PrideTek.EzSale.Models.Entities
             get { return GetValue<long?>(); }
             set { SetValue(value); }
         }
-        public int EmployeeIdOriginalValue => GetOriginalValue<int>(nameof(EmployeeId));
+        public long? EmployeeIdOriginalValue => GetOriginalValue<long?>(nameof(EmployeeId));
         public bool EmployeeIdIsChanged => GetIsChanged(nameof(EmployeeId));
 
-
+        [Required(ErrorMessage = "First Name is required.")]
         public string FirstName
         {
             get { return GetValue<string>(); }
@@ -57,6 +58,7 @@ namespace PrideTek.EzSale.Models.Entities
         public bool FirstNameIsChanged => GetIsChanged(nameof(FirstName));
 
 
+        [Required(ErrorMessage = "Last Name is required.")]
         public string LastName
         {
             get { return GetValue<string>(); }
@@ -210,7 +212,14 @@ namespace PrideTek.EzSale.Models.Entities
 
 
 
+        public string Position
+        {
+            get { return GetValue<string>(); }
+            set { SetValue(value); }
+        }
 
+        public string PositionOriginalValue => GetOriginalValue<string>(nameof(Position));
+        public bool PositionIsChanged => GetIsChanged(nameof(Position));
 
 
 

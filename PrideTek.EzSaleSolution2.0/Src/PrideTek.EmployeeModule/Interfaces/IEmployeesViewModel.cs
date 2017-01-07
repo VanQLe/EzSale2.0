@@ -9,5 +9,6 @@ namespace PrideTek.EmployeeModule.Interfaces
 {
     public interface IEmployeesViewModel: IViewModel
     {
+
     }
 }

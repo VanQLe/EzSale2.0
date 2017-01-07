@@ -1,0 +1,3 @@
+Log message 2017-Jan-05-14:26[Information]New user was added: Tessting Log Logger, 01/05/2017 14:26:07, 55432a59-f75e-4989-ab68-f8a4f3dffd34
+Log message 2017-Jan-05-14:56[Information]New user was added: dfgdfgd asdsaas, 01/05/2017 14:56:23, e0a574d9-50ad-4a35-b940-9e873474bd0f
+Log message 2017-Jan-05-14:59[Information]New Employee was added: Huy Pham, 01/05/2017 14:59:01, c25fffb6-9128-420f-b6aa-f14c81505c90

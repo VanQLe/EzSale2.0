@@ -13,5 +13,11 @@ namespace PrideTek.EzSale.Infrastructure
         public static string EmployeeAddView = "EmployeeAddView";
         public static string EmployeesView = "EmployeesView";
         public static string EmployeesListView = "EmployeesListView";
+
+        //Customer views
+        public static string CustomersView = "CustomersView";
+        public static string CustomerToolbarView = "CustomerToolbarView";
+        public static string CustomerAddView = "CustomerAddView";
+        public static string CustomersListView = "CustomersListView";
     }
 }

@@ -49,6 +49,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\CustomerWrapper.cs" />
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\EmployeeItem.cs" />
     <Compile Include="Entities\EmployeeWrapper.cs" />
@@ -80,6 +82,10 @@
     <ProjectReference Include="..\PrideTek.Shell.Common\PrideTek.Shell.Common.csproj">
       <Project>{40535083-398D-4FED-9B71-012B03205E13}</Project>
       <Name>PrideTek.Shell.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrideTek.Shell.Core\PrideTek.Shell.Core.csproj">
+      <Project>{DBF43CD5-BE14-4202-9A9B-C10C72FD2625}</Project>
+      <Name>PrideTek.Shell.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

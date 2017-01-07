@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="/PrideTek.EzSale.Infrastructure;Component/Styles/TextBox.xaml"/>
                 <ResourceDictionary Source="/PrideTek.EzSale.Infrastructure;Component/Styles/DatePicker.xaml"/>
                 <ResourceDictionary Source="/PrideTek.EzSale.Infrastructure;Component/Styles/ComboBox.xaml"/>
+                <ResourceDictionary Source="/PrideTek.EzSale.Infrastructure;Component/Styles/Theme.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

@@ -24,5 +24,6 @@ namespace PrideTek.EzSale.DAL
         }
 
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Customer> Customers { get; set; }
     }
 }
