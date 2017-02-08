@@ -21,6 +21,9 @@ using System.Windows.Data;
 using Serilog;
 using PrideTek.EzSale.Infrastructure.Logging;
 
+#pragma warning disable CS0168
+
+
 namespace PrideTek.EmployeeModule
 {
     public class EmployeeAddViewModel : BaseViewModel, IEmployeeAddViewModel, INavigationAware, IRegionMemberLifetime

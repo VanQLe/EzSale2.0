@@ -18,8 +18,11 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
+#pragma warning disable CS0168
+
 namespace PrideTek.CustomerModule
 {
+
     public class CustomerAddViewModel : BaseViewModel, ICustomerAddViewModel, INavigationAware, IRegionMemberLifetime
     {
         public string ViewTitle { get; set; }
@@ -47,7 +50,9 @@ namespace PrideTek.CustomerModule
             ResetCommand = new DelegateCommand(ResetEntity, ModelIsChanged);
 
             ComboStatesList = CollectionViewSource.GetDefaultView(ComboBoxData.States);
-           
+
+
+
         }
 
 

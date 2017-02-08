@@ -65,3 +65,6 @@ C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.M
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\Serilog.Sinks.Seq.xml
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\Serilog.Sinks.PeriodicBatching.xml
 C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\Serilog.Formatting.Compact.xml
+C:\Users\Van\Desktop\Programming\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\bin\Debug\PrideTek.EzSale.MainApp.exe.config
+C:\Users\Van\Desktop\Programming\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\obj\Debug\PrideTek.EzSale.MainApp.exe
+C:\Users\Van\Desktop\Programming\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.MainApp\obj\Debug\PrideTek.EzSale.MainApp.pdb

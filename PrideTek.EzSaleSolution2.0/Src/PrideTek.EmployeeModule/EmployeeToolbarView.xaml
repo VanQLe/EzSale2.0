@@ -21,7 +21,7 @@
                 </MenuItem.Icon>
             </MenuItem>
 
-            <MenuItem Header="Employees Schedule" >
+            <MenuItem Header="Employees Schedule" Command="{Binding NavCommand}" CommandParameter="{x:Static inf:ViewNames.EmployeeScheduleView}">
                 <!--Command="{Binding NavCommand}" CommandParameter="{x:Static inf:ViewNames.EmployeesView}">-->
                 <MenuItem.Icon>
                     <Image Source="/PrideTek.EzSale.Infrastructure;Component/images/DashedLines.gif" />

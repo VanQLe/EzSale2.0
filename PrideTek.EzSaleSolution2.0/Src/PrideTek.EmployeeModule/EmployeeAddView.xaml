@@ -136,7 +136,6 @@
                                 <RowDefinition Height="50px"/>
                                 <RowDefinition Height="50px"/>
                             </Grid.RowDefinitions>
-                            <ComboBox Grid.Row="0" IsEditable="True" ItemsSource="{x:Static inf:ComboBoxData.HourlyWages}" SelectedItem="{Binding SelectedItem.HourlyWage}" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
                             <TextBox Grid.Row="1"   Style="{DynamicResource InputTBStyle}" Text="{Binding SelectedItem.CellPhone, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
 

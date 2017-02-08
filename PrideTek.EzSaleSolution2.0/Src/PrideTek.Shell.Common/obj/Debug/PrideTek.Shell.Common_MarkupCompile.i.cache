@@ -4,7 +4,7 @@
 library
 C#
 .cs
-C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Shell.Common\obj\Debug\
+C:\Users\Van\Desktop\Programming\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.Shell.Common\obj\Debug\
 PrideTek.Shell.Common
 none
 false
@@ -16,5 +16,5 @@ DEBUG;TRACE
 14-534746103
 Styles\BrushesStyle.xaml;Styles\TextBoxStyle.xaml;Views\Services\MessageDialog\MessageDialog.xaml;
 
-False
+True
 

@@ -31,6 +31,7 @@ namespace PrideTek.EmployeeModule
             //Register views
             Container.RegisterTypeForNavigation<EmployeesView>();
             Container.RegisterTypeForNavigation<EmployeeAddView>();
+            Container.RegisterTypeForNavigation<EmployeeScheduleView>();
 
             //Register ViewModels
             Container.RegisterType<IEmployeeToolbarViewModel, EmployeeToolbarViewModel>();

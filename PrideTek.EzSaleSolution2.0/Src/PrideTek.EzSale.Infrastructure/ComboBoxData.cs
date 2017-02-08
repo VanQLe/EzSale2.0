@@ -31,23 +31,28 @@ namespace PrideTek.EzSale.Infrastructure
 
             SortByEntityState = new List<string>() { "Active", "Deleted", "Both" };
 
+            MagicScheduleValues = new List<string>() { "9:00 AM - 5:00 PM", "9:00 AM - 6:00 PM", "Custome" };
         }
 
-        public static List<decimal> HourlyWages { get; set; }
-        public static List<string> ContactPreference { get; set; }
+        //These values are readonly
 
-        public static List<string> States { get; set; }
+        public static List<decimal> HourlyWages { get; }
+        public static List<string> ContactPreference { get;}
 
-        public static List<string> Countries { get; set; }
+        public static List<string> States { get; }
 
-        public static List<string> AccessPermission { get; set; }
+        public static List<string> Countries { get; }
 
-        public static List<string> SortByPropertyValues { get; set; }
+        public static List<string> AccessPermission { get;}
 
-        public static List<string> SortByEntityState { get; set; }
+        public static List<string> SortByPropertyValues { get; }
 
-        public static List<string> Gender { get; set; }
+        public static List<string> SortByEntityState { get;}
 
-        public static List<string> Positions { get; set; }
+        public static List<string> Gender { get; }
+
+        public static List<string> Positions { get; }
+
+        public static List<string> MagicScheduleValues { get; }
     }
 }

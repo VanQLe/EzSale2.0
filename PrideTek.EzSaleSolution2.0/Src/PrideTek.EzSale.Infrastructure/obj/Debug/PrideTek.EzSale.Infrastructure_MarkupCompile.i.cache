@@ -4,7 +4,7 @@
 library
 C#
 .cs
-C:\Users\Van\Desktop\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Infrastructure\obj\Debug\
+C:\Users\Van\Desktop\Programming\EzSale_2.0\PrideTek.EzSaleSolution2.0\Src\PrideTek.EzSale.Infrastructure\obj\Debug\
 PrideTek.EzSale.Infrastructure
 none
 false
@@ -13,8 +13,8 @@ DEBUG;TRACE
 12-68214883
 
 20878696191
-79-1582840545
+791716778173
 Styles\Brushes.xaml;Styles\Button.xaml;Styles\ComboBox.xaml;Styles\ControlBaseStyle.xaml;Styles\DarkBrushes.xaml;Styles\DatePicker.xaml;Styles\FontAndSizeStyle.xaml;Styles\Label.xaml;Styles\Separator.xaml;Styles\TextBox.xaml;Styles\Theme.xaml;UI_Helper\BusyIndicator.xaml;
 
-False
+True
 

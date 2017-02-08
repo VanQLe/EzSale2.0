@@ -66,6 +66,10 @@
       <Project>{40535083-398d-4fed-9b71-012b03205e13}</Project>
       <Name>PrideTek.Shell.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PrideTek.Shell.Core\PrideTek.Shell.Core.csproj">
+      <Project>{DBF43CD5-BE14-4202-9A9B-C10C72FD2625}</Project>
+      <Name>PrideTek.Shell.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

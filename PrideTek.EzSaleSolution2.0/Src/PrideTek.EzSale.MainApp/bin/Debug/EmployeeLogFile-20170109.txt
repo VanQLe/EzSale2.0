@@ -1,0 +1,4 @@
+Log message 2017-Jan-09-14:56[Information]Edited employee: 1asda sadsadas2, 01/09/2017 14:56:22, d42b2fee-5ba7-43b6-b7f4-b445ceace1ba
+Log message 2017-Jan-09-14:56[Error]Test Error
+Log message 2017-Jan-09-14:57[Information]New Employee was added: Hello  World, 01/09/2017 14:57:28, 6953c893-d55c-4ef5-9e13-be4998caf63d
+Log message 2017-Jan-09-14:57[Error]Test Error
